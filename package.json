@@ -1,0 +1,19 @@
+{
+  "name": "mentoria-api-nodejs",
+  "version": "1.0.0",
+  "description": "api nodejs mentoria",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pedrosantos0328/mentoria-api-nodejs.git"
+  },
+  "author": "Pedro Cesar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pedrosantos0328/mentoria-api-nodejs/issues"
+  },
+  "homepage": "https://github.com/pedrosantos0328/mentoria-api-nodejs#readme"
+}
