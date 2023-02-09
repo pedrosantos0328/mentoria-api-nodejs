@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/pedrosantos0328/mentoria-api-nodejs/issues"
   },
-  "homepage": "https://github.com/pedrosantos0328/mentoria-api-nodejs#readme"
+  "homepage": "https://github.com/pedrosantos0328/mentoria-api-nodejs#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
