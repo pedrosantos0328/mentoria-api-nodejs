@@ -14,4 +14,11 @@ app.get("/soma/:num1/:num2", function (request, response) {
     const soma= num1+num2;
     return response.json(soma);
 });
+
+app.get("/sub/:num1/:num2", function (request, response){
+    const num1 = Number(request.params.num1);
+    const num2 = Number(request.params.num2);
+    const sub = num1-num2;
+    return response.json(sub);
+})
 module.exports = app;
