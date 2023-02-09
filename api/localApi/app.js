@@ -47,10 +47,10 @@ app.get("/media/:num1/:num2/:num3/:num4/:num5", function (request, response){
 app.get("/verificar-nome/:nome", function (request, response){
     const nome = request.params.nome;
     if(nome.toLowerCase()== 'pedro'){
-    return response.json("Você digitou meu nome");
+        return response.json("Você digitou meu nome");
     }
     else{
-    return response.json("Você digitou o nome incorreto");
+        return response.json("Você digitou o nome incorreto");
     }
 })
 module.exports = app;
