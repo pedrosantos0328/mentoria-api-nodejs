@@ -34,5 +34,14 @@ app.get("/div/:num1/:num2", function (request, response){
     const num2 = Number(request.params.num2);
     const div = num1/num2;
     return response.json(div);
-})
+});
+app.get("/media/:num1/:num2/:num3/:num4/:num5", function (request, response){
+    const num1 = Number(request.params.num1);
+    const num2 = Number(request.params.num2);
+    const num3 = Number(request.params.num3);
+    const num4 = Number(request.params.num4);
+    const num5 = Number(request.params.num5); 
+    const media = (num1+num2+num3+num4+num5)/5;
+    return response.json(media);
+});
 module.exports = app;
