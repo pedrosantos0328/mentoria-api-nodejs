@@ -54,4 +54,12 @@ app.get("/verificar-nome/:nome", function (request, response){
         return response.json("Você digitou o nome incorreto");
     }
 });
+app.get("/calculadora/:operacao/:num1/:num2", function (request, response){
+    const num1 = Number(request.params.num1);
+    const num2 = Number(request.params.num2);
+    const operacao = request.params.operacao;
+    const result = apiController.calculadora(operacao, num1, num2);
+    return response.json(result);
+
+})
 module.exports = app;

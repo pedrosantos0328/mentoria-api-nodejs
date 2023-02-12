@@ -7,5 +7,8 @@ somar(num1, num2){
 mediaAluno(num1, num2, num3, num4, num5){
     return apiService.mediaAluno(num1, num2, num3,num4, num5);
 }
+calculadora(operacao, num1, num2){
+    return apiService.calculadora(operacao, num1, num2);
+}
 }
 module.exports=ApiController;
