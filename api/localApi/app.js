@@ -61,5 +61,14 @@ app.get("/calculadora/:operacao/:num1/:num2", function (request, response){
     const result = apiController.calculadora(operacao, num1, num2);
     return response.json(result);
 
+});
+app.get("/reqFuncionario/:expJava/:expBanco/:expProgramar/:expLidera", function (request, response){
+    console.log("Chegou aqui");
+    const expJava = request.params.expJava;
+    const expBanco = request.params.expBanco;
+    const expProgramar = request.params.expProgramar;
+    const expLidera = request.params.expLidera;
+    const result = apiController.reqFuncionario(expJava, expBanco, expProgramar, expLidera);
+    return response.json(result); 
 })
 module.exports = app;

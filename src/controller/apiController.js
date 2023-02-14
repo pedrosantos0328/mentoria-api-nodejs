@@ -10,5 +10,8 @@ mediaAluno(num1, num2, num3, num4, num5){
 calculadora(operacao, num1, num2){
     return apiService.calculadora(operacao, num1, num2);
 }
+reqFuncionario(expJava, expBanco, expProgramar, expLidera){
+    return apiService.reqFuncionario(expJava, expBanco, expProgramar, expLidera);
+}
 }
 module.exports=ApiController;
