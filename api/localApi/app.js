@@ -70,5 +70,12 @@ app.get("/reqFuncionario/:expJava/:expBanco/:expProgramar/:expLidera", function 
     const expLidera = request.params.expLidera;
     const result = apiController.reqFuncionario(expJava, expBanco, expProgramar, expLidera);
     return response.json(result); 
+});
+app.get("/jogador/:idade/:peso/:posicao", function (request, response){
+    const idade = request.params.idade;
+    const peso = request.params.peso;
+    const posicao = request.params.posicao;
+    const result = apiController.jogador(idade, peso, posicao);
+    return response.json(result);
 })
 module.exports = app;

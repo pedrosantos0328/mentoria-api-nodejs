@@ -58,6 +58,28 @@ class ApiService {
             };
         }
     }
+    jogador(idade, peso, posicao){
+        let naoPreenche = '';
+        if (idade == 20 && peso>80 && peso<85 && posicao == 'atacante'){
+            return ("O canditado preenche os requisitos");
+        }
+        else {
+            if (idade != 20){
+                naoPreenche = "Idade ";
+            }
+            if (peso < 80, peso > 85){
+                naoPreenche += "Peso ";
+            }
+            if (posicao != 'atacante'){
+                naoPreenche += "Atacante ";
+            }
+            return {
+                message: "O candidato não preencheu os requisitos",
+                requisitos: naoPreenche
+            };
+
+        }
+    }
 
 }
 module.exports = ApiService;

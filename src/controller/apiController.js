@@ -13,5 +13,8 @@ calculadora(operacao, num1, num2){
 reqFuncionario(expJava, expBanco, expProgramar, expLidera){
     return apiService.reqFuncionario(expJava, expBanco, expProgramar, expLidera);
 }
+jogador(idade, peso, posicao){
+    return apiService.jogador(idade, peso, posicao);
+}
 }
 module.exports=ApiController;
