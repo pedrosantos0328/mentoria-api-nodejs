@@ -80,6 +80,33 @@ class ApiService {
 
         }
     }
+    
+    verificarCor(numCor){
+        numCor= Number(numCor);
+        let result = null;
+        
+        switch (numCor) {
+            case 1:
+                result = 'azul';
+                break;
+            case 2:
+                result ='verde';
+                break;
+            case 3:
+                result = 'amarelo';
+                break;
+            case 4:
+                result = 'branco';
+                break;
+
+            default:
+                result = "cor inválida";
+                break;
+
+        }
+
+        return result;
+    }
 
 }
 module.exports = ApiService;

@@ -77,5 +77,12 @@ app.get("/jogador/:idade/:peso/:posicao", function (request, response){
     const posicao = request.params.posicao;
     const result = apiController.jogador(idade, peso, posicao);
     return response.json(result);
-})
+});
+
+app.get("/verificar-cor/:numCor", function (request, response){
+    const numCor = request.params.numCor;
+    const result = apiController.verificarCor(numCor);
+    return response.json(result);
+});
+
 module.exports = app;
