@@ -160,5 +160,28 @@ class ApiService {
         return result;
     }
 
+    consultarCarro(marca){
+        let result = null;
+        marca = marca.toLowerCase()
+        switch(marca) {
+            case 'toyota':
+                result = 'corolla, hilux, sw4, yaris, camry';
+                break;
+            case 'fiat':
+                result = 'strada, uno, mobi, fiorino, doblo';
+                break;
+            case 'chevrolet':
+                result = 'onix, cruze, camaro, prisma, equinox';
+                break;
+            case 'volkswagem':
+                result = 'polo, jetta, gol, voyage, cross';
+                break;
+            default:
+                result = "Marca indisponível";
+                break;
+        }
+        return result;
+    }
+
 }
 module.exports = ApiService;

@@ -99,6 +99,12 @@ app.get("/copaDoMundo/:ano", function (request, response){
     console.log(nome);
     const result = apiController.copaDoMundo(ano);
     return response.json(result);
+});
+
+app.get("/consultarCarro", function (request, response){
+    const marca = request.query.marca;
+    const result = apiController.consultarCarro(marca);
+    return response.json(result);
 })
 
 module.exports = app;

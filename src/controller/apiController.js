@@ -30,5 +30,8 @@ class ApiController {
     copaDoMundo(ano){
         return apiService.copaDoMundo(ano);
     }
+    consultarCarro(marca){
+        return apiService.consultarCarro(marca);
+    }
 }
 module.exports = ApiController;
