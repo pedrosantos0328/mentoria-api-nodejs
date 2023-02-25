@@ -85,4 +85,12 @@ app.get("/verificar-cor/:numCor", function (request, response){
     return response.json(result);
 });
 
+app.get("/calculadora2/:operacao/:num1/:num2", function (request, response){
+    const operacao = request.params.operacao;
+    const num1 = Number(request.params.num1);
+    const num2 = Number(request.params.num2);
+    const result = apiController.calculadora2(operacao, num1, num2);
+    return response.json(result);
+})
+
 module.exports = app;

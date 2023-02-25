@@ -24,5 +24,8 @@ class ApiController {
     verificarCor(numCor) {
         return apiService.verificarCor(numCor);
     }
+    calculadora2(operacao, num1, num2) {
+        return apiService.calculadora2(operacao, num1, num2);
+    }
 }
 module.exports = ApiController;
