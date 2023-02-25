@@ -91,6 +91,14 @@ app.get("/calculadora2/:operacao/:num1/:num2", function (request, response){
     const num2 = Number(request.params.num2);
     const result = apiController.calculadora2(operacao, num1, num2);
     return response.json(result);
+});
+
+app.get("/copaDoMundo/:ano", function (request, response){
+    const ano = request.params.ano;
+    const nome = request.query.nome;
+    console.log(nome);
+    const result = apiController.copaDoMundo(ano);
+    return response.json(result);
 })
 
 module.exports = app;

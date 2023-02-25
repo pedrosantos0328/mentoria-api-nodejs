@@ -134,5 +134,31 @@ class ApiService {
             return result;
     }
 
+    copaDoMundo(ano){
+        let result = null;
+        ano = Number(ano);
+        switch(ano) {
+            case 1958:
+                result = 'Campeão';
+                break;
+            case 1962:
+                result = 'Bicampeão';
+                break;
+            case 1970:
+                result = 'Tricampeão';
+                break;
+            case 1994:
+                result = 'Tetracampeão';
+                break;
+            case 2002:
+                result = 'Pentacampeão';
+                break;
+            default:
+                result = "Nesta copa o Brasil perdeu";
+                break;
+        }
+        return result;
+    }
+
 }
 module.exports = ApiService;

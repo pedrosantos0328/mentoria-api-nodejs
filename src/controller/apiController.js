@@ -27,5 +27,8 @@ class ApiController {
     calculadora2(operacao, num1, num2) {
         return apiService.calculadora2(operacao, num1, num2);
     }
+    copaDoMundo(ano){
+        return apiService.copaDoMundo(ano);
+    }
 }
 module.exports = ApiController;
