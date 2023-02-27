@@ -105,6 +105,13 @@ app.get("/consultarCarro", function (request, response){
     const marca = request.query.marca;
     const result = apiController.consultarCarro(marca);
     return response.json(result);
-})
+});
+
+app.get("/lista-carros", function (request, response){
+    const body = request.body;
+    console.log("body array carros", body);
+    return response.json(true);
+});
+
 
 module.exports = app;
