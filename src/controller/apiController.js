@@ -48,5 +48,9 @@ class ApiController {
     verificarFuncionarioMaisNovo(arrayFuncionarios) {
         return apiService.verificarFuncionarioMaisNovo(arrayFuncionarios);
     }
+
+    verificarDemissoes(arrayFuncionarios) {
+        return apiService.verificarDemissoes(arrayFuncionarios);        
+    }
 }
 module.exports = ApiController;

@@ -126,4 +126,10 @@ app.get("/verificarFuncionarioMaisNovo", function (request, response) {
     return response.json(result);
 });
 
+app.get("/verificarDemissoes", function (request, response){
+    const body = request.body;
+    const result = apiController.verificarDemissoes(body);
+    return response.json(result);
+});
+
 module.exports = app;

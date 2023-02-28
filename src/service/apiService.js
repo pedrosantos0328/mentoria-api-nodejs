@@ -249,6 +249,29 @@ class ApiService {
         }
     }
 
+    verificarDemissoes(arrayFuncionarios) {
+        let qtdAnalistaSistemasIdade = 0;
+        let nomeFuncionario = null;
+
+        let arrayFuncionarioDemitido = [];
+
+        arrayFuncionarios.forEach(item => {
+            let idade = item.idade;
+            let nome = item.nome;
+            let cargo = item.cargo.toLowerCase();
+        
+            if(idade > 25 && cargo == 'analista de sistemas') {
+                arrayFuncionarioDemitido.push(nome);
+                qtdAnalistaSistemasIdade++
+            }
+        });
+
+        return{
+            analistasDemitidos: qtdAnalistaSistemasIdade,
+            nomeDosFuncionarios: arrayFuncionarioDemitido
+        }
+    }
+
 
 
 
