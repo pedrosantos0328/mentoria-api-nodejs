@@ -183,5 +183,38 @@ class ApiService {
         return result;
     }
 
+        verificarCarro(arrayCarros){
+        let qtdFiat = 0;
+        let qtdToyota = 0;
+        let qtdBmw = 0;
+        let qtdChevrolet = 0;
+        for(let contador=0; contador<arrayCarros.length; contador++){
+            let marca = arrayCarros[contador].marca.toLowerCase();
+                if(marca === 'fiat'){
+                    qtdFiat++
+                }
+                else if(marca === 'toyota'){
+                    qtdToyota++
+                }
+                else if(marca === 'bmw'){
+                    qtdBmw++
+                }
+                else if(marca === 'chevrolet'){
+                    qtdChevrolet++
+                }
+                }
+                return{
+                    quantidadeFiat: qtdFiat,
+                    quantidadeToyota: qtdToyota,
+                    quantidadeBmw: qtdBmw,
+                    quantidadeChevrolet: qtdChevrolet
+                }
+                
+        }
+
+        
+
+        
+
 }
 module.exports = ApiService;

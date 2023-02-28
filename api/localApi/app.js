@@ -107,10 +107,10 @@ app.get("/consultarCarro", function (request, response){
     return response.json(result);
 });
 
-app.get("/lista-carros", function (request, response){
+app.get("/verificarCarro", function (request, response){
     const body = request.body;
-    console.log("body array carros", body);
-    return response.json(true);
+    const result = apiController.verificarCarro(body);
+    return response.json(result);
 });
 
 

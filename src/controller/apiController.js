@@ -33,5 +33,8 @@ class ApiController {
     consultarCarro(marca){
         return apiService.consultarCarro(marca);
     }
+    verificarCarro(arrayCarros){
+        return apiService.verificarCarro(arrayCarros);
+    }
 }
 module.exports = ApiController;
