@@ -112,6 +112,15 @@ app.get("/verificarCarro", function (request, response){
     const result = apiController.verificarCarro(body);
     return response.json(result);
 });
-
+app.get("/verificarFuncionarioMaisVelho", function (request, response){
+    const body = request.body;
+    const result = apiController.verificarFuncionarioMaisVelho(body);
+    return response.json(result);
+});
+app.get("/verificarFuncionarioMaisNovo", function (request, response){
+    const body = request.body;
+    const result = apiController.verificarFuncionarioMaisNovo(body);
+    return response.json(result);
+});
 
 module.exports = app;

@@ -36,5 +36,11 @@ class ApiController {
     verificarCarro(arrayCarros){
         return apiService.verificarCarro(arrayCarros);
     }
+    verificarFuncionarioMaisVelho(arrayFuncionarios){
+        return apiService.verificarFuncionarioMaisVelho(arrayFuncionarios);
+    }
+    verificarFuncionarioMaisNovo(arrayFuncionarios){
+        return apiService.verificarFuncionarioMaisNovo(arrayFuncionarios);
+    }
 }
 module.exports = ApiController;

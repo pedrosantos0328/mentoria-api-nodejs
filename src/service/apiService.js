@@ -212,6 +212,38 @@ class ApiService {
                 
         }
 
+        verificarFuncionarioMaisVelho(arrayFuncionarios){
+            let maiorIdade = 0
+            let nomeFuncionario = null;
+            for(let contador = 0; contador<arrayFuncionarios.length; contador++){
+                let idadeFuncionario = arrayFuncionarios[contador].idade;
+                if(idadeFuncionario>maiorIdade){
+                    maiorIdade=idadeFuncionario;
+                    nomeFuncionario = arrayFuncionarios[contador].nome;
+                }
+            }
+            return{
+                funcionarioMaisVelho: maiorIdade,
+                nomeDoFuncionario: nomeFuncionario
+            }
+        }
+
+        verificarFuncionarioMaisNovo(arrayFuncionarios){
+            let menorIdade = 9999999999;
+            let nomeFuncionario = null;
+            for(let contador = 0; contador<arrayFuncionarios.length; contador++){
+                let idadeFuncionario = arrayFuncionarios[contador].idade;
+                if(idadeFuncionario<menorIdade){
+                    menorIdade = idadeFuncionario;
+                    nomeFuncionario = arrayFuncionarios[contador].nome;
+                }
+            }
+            return{
+                funcionarioMaisNovo: menorIdade,
+                nomeDoFuncionario: nomeFuncionario
+            }
+        }
+
         
 
         
