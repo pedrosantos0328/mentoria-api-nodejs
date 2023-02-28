@@ -219,7 +219,7 @@ class ApiService {
 
         arrayFuncionarios.forEach(item => {
             let idade = item.idade;
-            let nomeFuncionario= item.nomeFuncionario;
+            let nomeFuncionario= item.nome;
 
             if (idade > maiorIdade) {
                 maiorIdade = idade;
