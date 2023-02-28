@@ -46,10 +46,10 @@ class ApiService {
             if (expBanco < 3) {
                 naoPreenche += "Banco ";
             }
-            if (expProgramar < 6){
+            if (expProgramar < 6) {
                 naoPreenche += "Programar ";
             }
-            if (expLidera < 2){
+            if (expLidera < 2) {
                 naoPreenche += "Lidera ";
             }
             return {
@@ -58,19 +58,19 @@ class ApiService {
             };
         }
     }
-    jogador(idade, peso, posicao){
+    jogador(idade, peso, posicao) {
         let naoPreenche = '';
-        if (idade == 20 && peso>80 && peso<85 && posicao == 'atacante'){
+        if (idade == 20 && peso > 80 && peso < 85 && posicao == 'atacante') {
             return ("O canditado preenche os requisitos");
         }
         else {
-            if (idade != 20){
+            if (idade != 20) {
                 naoPreenche = "Idade ";
             }
-            if (peso < 80, peso > 85){
+            if (peso < 80, peso > 85) {
                 naoPreenche += "Peso ";
             }
-            if (posicao != 'atacante'){
+            if (posicao != 'atacante') {
                 naoPreenche += "Atacante ";
             }
             return {
@@ -80,17 +80,17 @@ class ApiService {
 
         }
     }
-    
-    verificarCor(numCor){
-        numCor= Number(numCor);
+
+    verificarCor(numCor) {
+        numCor = Number(numCor);
         let result = null;
-        
+
         switch (numCor) {
             case 1:
                 result = 'azul';
                 break;
             case 2:
-                result ='verde';
+                result = 'verde';
                 break;
             case 3:
                 result = 'amarelo';
@@ -108,36 +108,36 @@ class ApiService {
         return result;
     }
 
-    calculadora2(operacao, num1, num2){
+    calculadora2(operacao, num1, num2) {
         let result = null;
         num1 = Number(num1);
         num2 = Number(num2);
-        switch(operacao) {
+        switch (operacao) {
             case 'soma':
-                result = num1+num2;
+                result = num1 + num2;
                 break;
             case 'mult':
-                result = num1*num2;
+                result = num1 * num2;
                 break;
             case 'div':
-                result = num1/num2;
+                result = num1 / num2;
                 break;
             case 'sub':
-                result = num1-num2;
+                result = num1 - num2;
                 break;
 
             default:
                 result = "operação invalida";
                 break;
-            }
+        }
 
-            return result;
+        return result;
     }
 
-    copaDoMundo(ano){
+    copaDoMundo(ano) {
         let result = null;
         ano = Number(ano);
-        switch(ano) {
+        switch (ano) {
             case 1958:
                 result = 'Campeão';
                 break;
@@ -160,10 +160,10 @@ class ApiService {
         return result;
     }
 
-    consultarCarro(marca){
+    consultarCarro(marca) {
         let result = null;
         marca = marca.toLowerCase()
-        switch(marca) {
+        switch (marca) {
             case 'toyota':
                 result = 'corolla, hilux, sw4, yaris, camry';
                 break;
@@ -183,70 +183,75 @@ class ApiService {
         return result;
     }
 
-        verificarCarro(arrayCarros){
+    verificarCarro(arrayCarros) {
         let qtdFiat = 0;
         let qtdToyota = 0;
         let qtdBmw = 0;
         let qtdChevrolet = 0;
-        for(let contador=0; contador<arrayCarros.length; contador++){
+        for (let contador = 0; contador < arrayCarros.length; contador++) {
             let marca = arrayCarros[contador].marca.toLowerCase();
-                if(marca === 'fiat'){
-                    qtdFiat++
-                }
-                else if(marca === 'toyota'){
-                    qtdToyota++
-                }
-                else if(marca === 'bmw'){
-                    qtdBmw++
-                }
-                else if(marca === 'chevrolet'){
-                    qtdChevrolet++
-                }
-                }
-                return{
-                    quantidadeFiat: qtdFiat,
-                    quantidadeToyota: qtdToyota,
-                    quantidadeBmw: qtdBmw,
-                    quantidadeChevrolet: qtdChevrolet
-                }
-                
-        }
-
-        verificarFuncionarioMaisVelho(arrayFuncionarios){
-            let maiorIdade = 0
-            let nomeFuncionario = null;
-            for(let contador = 0; contador<arrayFuncionarios.length; contador++){
-                let idadeFuncionario = arrayFuncionarios[contador].idade;
-                if(idadeFuncionario>maiorIdade){
-                    maiorIdade=idadeFuncionario;
-                    nomeFuncionario = arrayFuncionarios[contador].nome;
-                }
+            if (marca === 'fiat') {
+                qtdFiat++
             }
-            return{
-                funcionarioMaisVelho: maiorIdade,
-                nomeDoFuncionario: nomeFuncionario
+            else if (marca === 'toyota') {
+                qtdToyota++
+            }
+            else if (marca === 'bmw') {
+                qtdBmw++
+            }
+            else if (marca === 'chevrolet') {
+                qtdChevrolet++
             }
         }
-
-        verificarFuncionarioMaisNovo(arrayFuncionarios){
-            let menorIdade = 9999999999;
-            let nomeFuncionario = null;
-            for(let contador = 0; contador<arrayFuncionarios.length; contador++){
-                let idadeFuncionario = arrayFuncionarios[contador].idade;
-                if(idadeFuncionario<menorIdade){
-                    menorIdade = idadeFuncionario;
-                    nomeFuncionario = arrayFuncionarios[contador].nome;
-                }
-            }
-            return{
-                funcionarioMaisNovo: menorIdade,
-                nomeDoFuncionario: nomeFuncionario
-            }
+        return {
+            quantidadeFiat: qtdFiat,
+            quantidadeToyota: qtdToyota,
+            quantidadeBmw: qtdBmw,
+            quantidadeChevrolet: qtdChevrolet
         }
 
-        
+    }
 
-        
+    verificarFuncionarioMaisVelho(arrayFuncionarios) {
+        let maiorIdade = 0
+        let nomeFuncionario = null;
+
+
+        arrayFuncionarios.forEach(item => {
+            let idade = item.idade;
+            let nomeFuncionario= item.nomeFuncionario;
+
+            if (idade > maiorIdade) {
+                maiorIdade = idade;
+                nomeFuncionario= nomeFuncionario;
+            }
+        });
+
+        return {
+            funcionarioMaisVelho: maiorIdade,
+            nomeDoFuncionario: nomeFuncionario
+        }
+    }
+
+    verificarFuncionarioMaisNovo(arrayFuncionarios) {
+        let menorIdade = 9999999999;
+        let nomeFuncionario = null;
+        for (let contador = 0; contador < arrayFuncionarios.length; contador++) {
+            let idadeFuncionario = arrayFuncionarios[contador].idade;
+            if (idadeFuncionario < menorIdade) {
+                menorIdade = idadeFuncionario;
+                nomeFuncionario = arrayFuncionarios[contador].nome;
+            }
+        }
+        return {
+            funcionarioMaisNovo: menorIdade,
+            nomeDoFuncionario: nomeFuncionario
+        }
+    }
+
+
+
+
 
 }
 module.exports = ApiService;

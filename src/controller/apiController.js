@@ -24,22 +24,28 @@ class ApiController {
     verificarCor(numCor) {
         return apiService.verificarCor(numCor);
     }
+    
     calculadora2(operacao, num1, num2) {
         return apiService.calculadora2(operacao, num1, num2);
     }
-    copaDoMundo(ano){
+
+    copaDoMundo(ano) {
         return apiService.copaDoMundo(ano);
     }
-    consultarCarro(marca){
+    
+    consultarCarro(marca) {
         return apiService.consultarCarro(marca);
     }
-    verificarCarro(arrayCarros){
+
+    verificarCarro(arrayCarros) {
         return apiService.verificarCarro(arrayCarros);
     }
-    verificarFuncionarioMaisVelho(arrayFuncionarios){
+
+    verificarFuncionarioMaisVelho(arrayFuncionarios) {
         return apiService.verificarFuncionarioMaisVelho(arrayFuncionarios);
     }
-    verificarFuncionarioMaisNovo(arrayFuncionarios){
+
+    verificarFuncionarioMaisNovo(arrayFuncionarios) {
         return apiService.verificarFuncionarioMaisNovo(arrayFuncionarios);
     }
 }
