@@ -330,6 +330,39 @@ class ApiService {
         }
     }
 
+    
+    agruparCarros(arrayCarros) {
+        let carrosFiat = [];
+        let carrosVolkswagem = [];
+        let carrosChevrolet = [];
+        let carrosToyota = [];
+
+        arrayCarros.forEach(item => {
+            
+
+            if(item.marca.toLowerCase() === 'fiat') {
+                carrosFiat.push(item);                
+            }
+            else if(item.marca.toLowerCase() === 'volkswagem') {
+                carrosVolkswagem.push(item);
+            }
+            else if(item.marca.toLowerCase() === 'chevrolet')  {
+                carrosChevrolet.push(item);
+            }
+            else if(item.marca.toLowerCase() === 'toyota')  {
+                carrosToyota.push(item);
+            }
+        });
+
+        return {
+            listaFiat: carrosFiat,
+            listaChevrolet: carrosChevrolet,
+            listaToyota: carrosToyota,
+            listaVolkswagem: carrosVolkswagem
+        }
+        
+    }
+
 
 
 }

@@ -60,5 +60,9 @@ class ApiController {
     consultarCarroFiat(arrayCarros) {
         return apiService.consultarCarroFiat(arrayCarros);
     }
+
+    agruparCarros(arrayCarros) {
+        return apiService.agruparCarros(arrayCarros);
+    }
 }
 module.exports = ApiController;

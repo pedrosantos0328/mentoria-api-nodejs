@@ -144,4 +144,10 @@ app.get("/consultarCarroFiat", function (request, response) {
     return response.json(result);
 });
 
+app.get("/agruparCarros", function (request, response) {
+    const body = request.body;
+    const result = apiController.agruparCarros(body);
+    return response.json(result);
+});
+
 module.exports = app;
