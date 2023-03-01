@@ -288,8 +288,12 @@ class ApiService {
 
             if((cargo == 'gerente executivo' || cargo == 'gerente executiva') && idade > 33 && (estadoCivil == 'casado' || estadoCivil == 'casada')) {
                 qtdGerenteExecutivo++
-                arrayFuncionarioGerente.push(nome);
-                arrayFuncionarioGerente.push(idade);
+                arrayFuncionarioGerente.push({
+                    nomeFuncionario: nome,
+                    idadeFuncionario: idade,
+                    estadoCivilFuncionario: estadoCivil
+                });
+                
             }               
            
         });
