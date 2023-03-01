@@ -132,4 +132,10 @@ app.get("/verificarDemissoes", function (request, response){
     return response.json(result);
 });
 
+app.get("/verificarFuncionarios", function (request, response) {
+    const body = request.body;
+    const result = apiController.verificarFuncionarios(body);
+    return response.json(result);
+});
+
 module.exports = app;

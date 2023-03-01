@@ -272,6 +272,35 @@ class ApiService {
         }
     }
 
+    verificarFuncionarios(arrayFuncionarios) {
+        let qtdGerenteExecutivo = 0;
+        let nomeFuncionario = null;
+        let arrayFuncionarioGerente = [];
+        
+        
+        
+
+        arrayFuncionarios.forEach(item => {
+            let idade = item.idade;
+            let nome = item.nome;
+            let cargo = item.cargo.toLowerCase();
+            let estadoCivil = item.estadoCivil.toLowerCase();
+
+            if((cargo == 'gerente executivo' || cargo == 'gerente executiva') && idade > 33 && (estadoCivil == 'casado' || estadoCivil == 'casada')) {
+                qtdGerenteExecutivo++
+                arrayFuncionarioGerente.push(nome);
+                arrayFuncionarioGerente.push(idade);
+            }               
+           
+        });
+
+        return{
+            qtdFuncionariosGerentesCasados: qtdGerenteExecutivo,
+            nomeFuncinario: arrayFuncionarioGerente,
+        }
+
+    }
+
 
 
 

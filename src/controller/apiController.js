@@ -52,5 +52,9 @@ class ApiController {
     verificarDemissoes(arrayFuncionarios) {
         return apiService.verificarDemissoes(arrayFuncionarios);        
     }
+
+    verificarFuncionarios(arrayFuncionarios) {
+        return apiService.verificarFuncionarios(arrayFuncionarios);
+    }
 }
 module.exports = ApiController;
