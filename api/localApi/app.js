@@ -138,4 +138,10 @@ app.get("/verificarFuncionarios", function (request, response) {
     return response.json(result);
 });
 
+app.get("/consultarCarroFiat", function (request, response) {
+    const body = request.body;
+    const result = apiController.consultarCarroFiat(body);
+    return response.json(result);
+});
+
 module.exports = app;

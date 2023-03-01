@@ -305,7 +305,30 @@ class ApiService {
 
     }
 
+    consultarCarroFiat(arrayCarros) {
+        let qtdCarroFiat = 0;
+        let arrayCarroFiat = [];
 
+        arrayCarros.forEach(item => {
+            let marca = item.marca.toLowerCase();
+            let modelo = item.modelo.toLowerCase();
+            let ano = item.ano;
+
+            if(marca == 'fiat' && ano >= 2015) {
+                qtdCarroFiat++
+                arrayCarroFiat.push({
+                    marcaCarro: marca,
+                    modeloCarro: modelo,
+                    anoCarro: ano
+                });
+            }
+        });
+
+        return {
+            qtdCarroFiat2015: qtdCarroFiat,
+            carrosFiat: arrayCarroFiat
+        }
+    }
 
 
 

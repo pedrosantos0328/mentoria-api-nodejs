@@ -56,5 +56,9 @@ class ApiController {
     verificarFuncionarios(arrayFuncionarios) {
         return apiService.verificarFuncionarios(arrayFuncionarios);
     }
+
+    consultarCarroFiat(arrayCarros) {
+        return apiService.consultarCarroFiat(arrayCarros);
+    }
 }
 module.exports = ApiController;
