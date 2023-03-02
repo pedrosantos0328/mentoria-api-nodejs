@@ -373,9 +373,9 @@ class ApiService {
         }
     }
 
-    consultarEstado(estado, body) {
+    consultarEstado(estado, arrEstado) {
         let estadoFiltrado = [];
-        estadoFiltrado = body.filter(objeto => objeto.estado.toLowerCase() === estado);
+        estadoFiltrado = arrEstado.filter(objeto => objeto.estado.toLowerCase() === estado);
 
         return {
             cidade: estadoFiltrado

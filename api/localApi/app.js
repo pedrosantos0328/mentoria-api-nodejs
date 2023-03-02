@@ -158,8 +158,8 @@ app.get("/consultarFiatChevrolet", function (request, response) {
 
 app.get("/consultarEstado", function (request, response) {
     const estado = request.query.estado;
-    const body = request.body;
-    const result = apiController.consultarEstado(estado, body);
+    const arrEstado = request.body;
+    const result = apiController.consultarEstado(estado, arrEstado);
     return response.json(result); 
     
 });

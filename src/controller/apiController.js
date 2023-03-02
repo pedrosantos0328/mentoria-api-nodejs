@@ -69,8 +69,8 @@ class ApiController {
         return apiService.consultarFiatChevrolet(arrayCarros);
     }
 
-    consultarEstado(estado, body) {
-        return apiService.consultarEstado(estado, body);
+    consultarEstado(estado, arrEstado) {
+        return apiService.consultarEstado(estado, arrEstado);
     }
 }
 module.exports = ApiController;
