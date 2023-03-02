@@ -223,7 +223,7 @@ class ApiService {
 
             if (idade > maiorIdade) {
                 maiorIdade = idade;
-                nomeFuncionario= nome;
+                nomeFuncionario = nome;
             }
         });
 
@@ -259,14 +259,14 @@ class ApiService {
             let idade = item.idade;
             let nome = item.nome;
             let cargo = item.cargo.toLowerCase();
-        
-            if(idade > 25 && cargo == 'analista de sistemas') {
+
+            if (idade > 25 && cargo == 'analista de sistemas') {
                 arrayFuncionarioDemitido.push(nome);
                 qtdAnalistaSistemasIdade++
             }
         });
 
-        return{
+        return {
             analistasDemitidos: qtdAnalistaSistemasIdade,
             nomeDosFuncionarios: arrayFuncionarioDemitido
         }
@@ -276,9 +276,9 @@ class ApiService {
         let qtdGerenteExecutivo = 0;
         let nomeFuncionario = null;
         let arrayFuncionarioGerente = [];
-        
-        
-        
+
+
+
 
         arrayFuncionarios.forEach(item => {
             let idade = item.idade;
@@ -286,19 +286,19 @@ class ApiService {
             let cargo = item.cargo.toLowerCase();
             let estadoCivil = item.estadoCivil.toLowerCase();
 
-            if((cargo == 'gerente executivo' || cargo == 'gerente executiva') && idade > 33 && (estadoCivil == 'casado' || estadoCivil == 'casada')) {
+            if ((cargo == 'gerente executivo' || cargo == 'gerente executiva') && idade > 33 && (estadoCivil == 'casado' || estadoCivil == 'casada')) {
                 qtdGerenteExecutivo++
                 arrayFuncionarioGerente.push({
                     nomeFuncionario: nome,
                     idadeFuncionario: idade,
                     estadoCivilFuncionario: estadoCivil
                 });
-                
-            }               
-           
+
+            }
+
         });
 
-        return{
+        return {
             qtdFuncionariosGerentesCasados: qtdGerenteExecutivo,
             nomeFuncinario: arrayFuncionarioGerente,
         }
@@ -314,7 +314,7 @@ class ApiService {
             let modelo = item.modelo.toLowerCase();
             let ano = item.ano;
 
-            if(marca == 'fiat' && ano >= 2015) {
+            if (marca == 'fiat' && ano >= 2015) {
                 qtdCarroFiat++
                 arrayCarroFiat.push({
                     marcaCarro: marca,
@@ -330,7 +330,7 @@ class ApiService {
         }
     }
 
-    
+
     agruparCarros(arrayCarros) {
         let carrosFiat = [];
         let carrosVolkswagem = [];
@@ -338,18 +338,18 @@ class ApiService {
         let carrosToyota = [];
 
         arrayCarros.forEach(item => {
-            
 
-            if(item.marca.toLowerCase() === 'fiat') {
-                carrosFiat.push(item);                
+
+            if (item.marca.toLowerCase() === 'fiat') {
+                carrosFiat.push(item);
             }
-            else if(item.marca.toLowerCase() === 'volkswagem') {
+            else if (item.marca.toLowerCase() === 'volkswagem') {
                 carrosVolkswagem.push(item);
             }
-            else if(item.marca.toLowerCase() === 'chevrolet')  {
+            else if (item.marca.toLowerCase() === 'chevrolet') {
                 carrosChevrolet.push(item);
             }
-            else if(item.marca.toLowerCase() === 'toyota')  {
+            else if (item.marca.toLowerCase() === 'toyota') {
                 carrosToyota.push(item);
             }
         });
@@ -360,10 +360,26 @@ class ApiService {
             listaToyota: carrosToyota,
             listaVolkswagem: carrosVolkswagem
         }
-        
+
     }
 
+    consultarFiatChevrolet(arrayCarros) {
+        let carrosFiltradosAno = [];
+        carrosFiltradosAno = arrayCarros.filter(carro => (carro.marca.toLowerCase() === 'fiat' || carro.marca.toLowerCase() === 'chevrolet') && carro.ano >= 2018);
 
+        return {
+            carrosFiatChevrolet: carrosFiltradosAno,
 
+        }
+    }
+
+    consultarEstado(estado, body) {
+        let estadoFiltrado = [];
+        estadoFiltrado = body.filter(objeto => objeto.estado.toLowerCase() === estado);
+
+        return {
+            cidade: estadoFiltrado
+        }
+    }
 }
 module.exports = ApiService;

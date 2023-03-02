@@ -150,4 +150,18 @@ app.get("/agruparCarros", function (request, response) {
     return response.json(result);
 });
 
+app.get("/consultarFiatChevrolet", function (request, response) {
+    const body = request.body;
+    const result = apiController.consultarFiatChevrolet(body);
+    return response.json(result);
+});
+
+app.get("/consultarEstado", function (request, response) {
+    const estado = request.query.estado;
+    const body = request.body;
+    const result = apiController.consultarEstado(estado, body);
+    return response.json(result); 
+    
+});
+
 module.exports = app;
