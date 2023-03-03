@@ -164,4 +164,10 @@ app.get("/consultarEstado", function (request, response) {
     
 });
 
+app.get("/verificarCarroMaisNovo", function (request, response) {
+    const arrCarro = request.body;
+    const result = apiController.verificarCarroMaisNovo(arrCarro);
+    return response.json(result);
+});
+
 module.exports = app;

@@ -381,5 +381,32 @@ class ApiService {
             cidade: estadoFiltrado
         }
     }
+
+    verificarCarroMaisNovo(arrCarro) {
+        let carroMaisNovo = 0;
+        let marcaCarro = null;
+        let modeloCarro = null;
+
+        arrCarro.forEach(item => {
+            let ano = item.ano;
+            let marca = item.marca.toLowerCase();
+            let modelo = item.modelo.toLowerCase();
+            
+            if(ano > carroMaisNovo) {
+                carroMaisNovo = ano;
+                marcaCarro = marca;
+                modeloCarro = modelo;
+                
+                }
+            }
+        );
+
+        return {
+            anoCarroMaisNovo: carroMaisNovo,
+            marcaCarromaisNovo: marcaCarro, 
+            modeloCarroMaisNovo: modeloCarro
+        }
+        
+    }
 }
 module.exports = ApiService;

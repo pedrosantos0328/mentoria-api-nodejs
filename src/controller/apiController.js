@@ -72,5 +72,9 @@ class ApiController {
     consultarEstado(estado, arrEstado) {
         return apiService.consultarEstado(estado, arrEstado);
     }
+
+    verificarCarroMaisNovo(arrCarro) {
+        return apiService.verificarCarroMaisNovo(arrCarro);
+    }
 }
 module.exports = ApiController;
