@@ -408,5 +408,29 @@ class ApiService {
         }
         
     }
+
+    verificarCarroMaisVelho(arrCarro) {
+        let carroMaisVelho = 999999999;
+        let marcaCarro = null;
+        let modeloCarro = null;
+
+        arrCarro.forEach(item=> {
+            let ano = item.ano;
+            let marca = item.marca.toLowerCase();
+            let modelo = item.modelo.toLowerCase();
+
+            if(ano < carroMaisVelho){
+                carroMaisVelho = ano;
+                marcaCarro = marca;
+                modeloCarro = modelo;
+            }
+        });
+
+        return {
+            anoCarroMaisVelho: carroMaisVelho,
+            marcaCarroMaisVelho: marcaCarro,
+            modeloCarroMaisVelho: modeloCarro
+        }
+    }
 }
 module.exports = ApiService;

@@ -170,4 +170,9 @@ app.get("/verificarCarroMaisNovo", function (request, response) {
     return response.json(result);
 });
 
+app.get("/verificarCarroMaisVelho", function (request, response) {
+    const arrCarro = request.body;
+    const result = apiController.verificarCarroMaisVelho(arrCarro);
+    return response.json(result);
+});
 module.exports = app;

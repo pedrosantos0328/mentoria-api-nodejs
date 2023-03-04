@@ -76,5 +76,9 @@ class ApiController {
     verificarCarroMaisNovo(arrCarro) {
         return apiService.verificarCarroMaisNovo(arrCarro);
     }
+
+    verificarCarroMaisVelho(arrCarro) {
+        return apiService.verificarCarroMaisVelho(arrCarro);
+    }
 }
 module.exports = ApiController;
