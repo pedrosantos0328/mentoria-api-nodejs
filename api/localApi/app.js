@@ -175,4 +175,10 @@ app.get("/verificarCarroMaisVelho", function (request, response) {
     const result = apiController.verificarCarroMaisVelho(arrCarro);
     return response.json(result);
 });
+
+app.get("/verificarCep/:cep", async function (request, response) {
+    const cep = Number(request.params.cep);
+    const result = await apiController.verificarCep(cep);
+    return response.json(result);
+});
 module.exports = app;

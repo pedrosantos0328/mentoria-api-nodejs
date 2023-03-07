@@ -80,5 +80,9 @@ class ApiController {
     verificarCarroMaisVelho(arrCarro) {
         return apiService.verificarCarroMaisVelho(arrCarro);
     }
+
+    async verificarCep(cep) {
+        return await apiService.verificarCep(cep);
+    }
 }
 module.exports = ApiController;

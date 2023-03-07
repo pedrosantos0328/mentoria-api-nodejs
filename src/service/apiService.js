@@ -1,3 +1,4 @@
+const axios = require('axios');
 class ApiService {
     somar(num1, num2) {
         const soma = num1 + num2;
@@ -430,6 +431,22 @@ class ApiService {
             anoCarroMaisVelho: carroMaisVelho,
             marcaCarroMaisVelho: marcaCarro,
             modeloCarroMaisVelho: modeloCarro
+        }
+    }
+
+    async verificarCep(cep) {
+        try {
+            const result = await axios.get(`http://viacep.com.br/ws/${cep}/json/`);
+            if (result.data.erro) {
+                return {
+                    message: 'erro ao consultar cep'
+                }
+            }
+            return result.data;
+            
+        } catch (error) {
+          console.log(error);  
+          return (`erro ao consultar cep:${error.message}`);
         }
     }
 }
