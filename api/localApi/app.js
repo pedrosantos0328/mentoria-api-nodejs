@@ -187,4 +187,10 @@ app.get("/verificarListaCep", async function (request, response) {
     const result = await apiController.verificarListaCep(arrCep);
     return response.json(result);
 });
+
+app.get("/consultarUf/:uf", async function (request, response) {
+    const uf = request.params.uf;
+    const result = await apiController.consultarUf(uf);
+    return response.json(result);
+});
 module.exports = app;

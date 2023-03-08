@@ -88,5 +88,9 @@ class ApiController {
     async verificarListaCep(arrCep) {
         return await apiService.verificarListaCep(arrCep);
     }
+
+    async consultarUf(uf) {
+        return await apiService.consultarUf(uf);
+    }
 }
 module.exports = ApiController;

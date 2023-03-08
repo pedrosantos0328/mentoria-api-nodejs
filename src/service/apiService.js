@@ -470,5 +470,16 @@ class ApiService {
             cepInvalido
         }
     }
+
+     async consultarUf(uf) {
+        
+        const arrEstado = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/`);
+        
+        const ufFiltrada = arrEstado.data.filter(objeto => objeto.sigla.toLowerCase() === uf);
+
+        return  ufFiltrada;
+        
+    }
+
 }
 module.exports = ApiService;
