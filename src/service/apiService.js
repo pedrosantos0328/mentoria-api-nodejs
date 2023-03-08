@@ -490,5 +490,12 @@ class ApiService {
         return regiaoFiltrada;
     }
 
+    async consultarEstado(estado) {
+        const arrEstado = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/`);
+        const estadoFiltrado = arrEstado.data.filter(objeto => objeto.nome.toLowerCase() === estado);
+
+        return estadoFiltrado;
+    }
+
 }
 module.exports = ApiService;

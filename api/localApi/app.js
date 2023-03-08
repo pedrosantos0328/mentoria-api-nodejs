@@ -199,4 +199,10 @@ app.get("/consultarRegiaoNorte/:regiao", async function (request, response) {
     const result = await apiController.consultarRegiaoNorte(regiao);
     return response.json(result);
 });
+
+app.get("/consultarEstado/:estado", async function (request, response) {
+    const estado = request.params.estado;
+    const result = await apiController.consultarEstado(estado);
+    return response.json(result);
+});
 module.exports = app;

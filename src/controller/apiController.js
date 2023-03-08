@@ -96,5 +96,9 @@ class ApiController {
     async consultarRegiaoNorte(regiao) {
         return await apiService.consultarRegiaoNorte(regiao);
     }
+
+    async consultarEstado(estado) {
+        return await apiService.consultarEstado(estado);
+    }
 }
 module.exports = ApiController;
