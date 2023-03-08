@@ -181,4 +181,10 @@ app.get("/verificarCep/:cep", async function (request, response) {
     const result = await apiController.verificarCep(cep);
     return response.json(result);
 });
+
+app.get("/verificarListaCep", async function (request, response) {
+    const arrCep = request.body;
+    const result = await apiController.verificarListaCep(arrCep);
+    return response.json(result);
+});
 module.exports = app;

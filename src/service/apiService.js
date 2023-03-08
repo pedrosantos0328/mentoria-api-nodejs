@@ -437,6 +437,7 @@ class ApiService {
     async verificarCep(cep) {
         try {
             const result = await axios.get(`http://viacep.com.br/ws/${cep}/json/`);
+            console.log(result);
             if (result.data.erro) {
                 return {
                     message: 'erro ao consultar cep'
@@ -447,6 +448,26 @@ class ApiService {
         } catch (error) {
           console.log(error);  
           return (`erro ao consultar cep:${error.message}`);
+        }
+    }
+
+    async verificarListaCep(arrCep) {
+        let cepsVerificados = [];
+        let cepVerificado;
+        let cepInvalido = [];
+        for(let contador = 0; contador < arrCep.length; contador++) {
+            cepVerificado = await axios.get(`http://viacep.com.br/ws/${arrCep[contador]}/json/`);
+            if(!cepVerificado.data.erro) {
+                cepsVerificados.push(cepVerificado.data);
+            }
+            else {
+                cepInvalido.push(arrCep[contador]);
+            }
+        
+        }
+        return {
+            cepsVerificados,
+            cepInvalido
         }
     }
 }
