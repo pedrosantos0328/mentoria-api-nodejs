@@ -481,5 +481,14 @@ class ApiService {
         
     }
 
+    async consultarRegiaoNorte(regiao) {
+        let regiaoFiltrada = [];
+        
+        const arrEstado = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/`);
+        regiaoFiltrada = arrEstado.data.filter(objeto => objeto.regiao.nome.toLowerCase() === 'norte');
+
+        return regiaoFiltrada;
+    }
+
 }
 module.exports = ApiService;

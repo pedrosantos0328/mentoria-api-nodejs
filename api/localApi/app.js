@@ -193,4 +193,10 @@ app.get("/consultarUf/:uf", async function (request, response) {
     const result = await apiController.consultarUf(uf);
     return response.json(result);
 });
+
+app.get("/consultarRegiaoNorte/:regiao", async function (request, response) {
+    const regiao = request.params.regiao;
+    const result = await apiController.consultarRegiaoNorte(regiao);
+    return response.json(result);
+});
 module.exports = app;
