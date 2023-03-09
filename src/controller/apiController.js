@@ -100,5 +100,9 @@ class ApiController {
     async consultarEstado(estado) {
         return await apiService.consultarEstado(estado);
     }
+
+    async consultarMunicipios(sigla) {
+        return await apiService.consultarMunicipios(sigla);
+    }
 }
 module.exports = ApiController;

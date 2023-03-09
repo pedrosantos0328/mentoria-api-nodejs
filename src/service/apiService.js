@@ -496,6 +496,22 @@ class ApiService {
 
         return estadoFiltrado;
     }
-
+    
+    async consultarMunicipios(sigla) {
+        try {
+            const result = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/${sigla}/municipios`);
+            console.log(result);
+            if (result.data.erro) {
+                return {
+                    message: 'erro ao consultar municipio'
+                }
+            }
+            return result.data;
+            
+        } catch (error) {
+          console.log(error);  
+          return (`erro ao consultar municipio:${error.message}`);
+        }
+    }
 }
 module.exports = ApiService;

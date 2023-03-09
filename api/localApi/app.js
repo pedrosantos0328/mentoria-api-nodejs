@@ -205,4 +205,10 @@ app.get("/consultarEstado/:estado", async function (request, response) {
     const result = await apiController.consultarEstado(estado);
     return response.json(result);
 });
+
+app.get("/consultarMunicipios", async function (request, response) {
+    const sigla = request.query.sigla;
+    const result = await apiController.consultarMunicipios(sigla);
+    return response.json(result);
+});
 module.exports = app;
