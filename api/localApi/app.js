@@ -211,4 +211,10 @@ app.get("/consultarMunicipios", async function (request, response) {
     const result = await apiController.consultarMunicipios(sigla);
     return response.json(result);
 });
+
+app.get("/consultarRegiao/:regiao", async function (request, response) {
+    const regiao = request.params.regiao;
+    const result = await apiController.consultarRegiao(regiao);
+    return response.json(result);
+});
 module.exports = app;

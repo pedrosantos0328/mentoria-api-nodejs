@@ -507,19 +507,40 @@ class ApiService {
                     message: 'erro ao consultar municipio'
                 }
             }
-           // result.data.forEach(municipio => {
-               // arrRetornoFormatado.push(
-                  //  {nomeMunicipio: municipio.nome,
-                 //    Id: municipio.id}
-             //   )       
-         //   });
-           // return arrRetornoFormatado;
+           
             for(let contador = 0; contador < result.data.length; contador++ )
             
             
                 arrRetornoFormatado.push({
                     nomeMunicipios: result.data[contador].nome,
                     Id: result.data[contador].id
+                })
+            
+            return arrRetornoFormatado;
+
+        } catch (error) { 
+          return (`erro ao consultar municipio:${error.message}`);
+        }
+    }
+
+    async consultarRegiao(regiao) {
+        try {
+            let arrRetornoFormatado = [];
+            
+            const result = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/`);
+            if (result.data.erro) {
+                return {
+                    message: 'erro ao consultar municipio'
+                }
+            }
+           
+            for(let contador = 0; contador < result.data.length; contador++ )
+            
+            
+                arrRetornoFormatado.push({
+                    nomeMunicipios: result.data[contador].nome,
+                    Id: result.data[contador].id,
+                    Regiao: result.data[contador].regiao.nome
                 })
             
             return arrRetornoFormatado;
