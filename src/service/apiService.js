@@ -392,22 +392,22 @@ class ApiService {
             let ano = item.ano;
             let marca = item.marca.toLowerCase();
             let modelo = item.modelo.toLowerCase();
-            
-            if(ano > carroMaisNovo) {
+
+            if (ano > carroMaisNovo) {
                 carroMaisNovo = ano;
                 marcaCarro = marca;
                 modeloCarro = modelo;
-                
-                }
+
             }
+        }
         );
 
         return {
             anoCarroMaisNovo: carroMaisNovo,
-            marcaCarromaisNovo: marcaCarro, 
+            marcaCarromaisNovo: marcaCarro,
             modeloCarroMaisNovo: modeloCarro
         }
-        
+
     }
 
     verificarCarroMaisVelho(arrCarro) {
@@ -415,12 +415,12 @@ class ApiService {
         let marcaCarro = null;
         let modeloCarro = null;
 
-        arrCarro.forEach(item=> {
+        arrCarro.forEach(item => {
             let ano = item.ano;
             let marca = item.marca.toLowerCase();
             let modelo = item.modelo.toLowerCase();
 
-            if(ano < carroMaisVelho){
+            if (ano < carroMaisVelho) {
                 carroMaisVelho = ano;
                 marcaCarro = marca;
                 modeloCarro = modelo;
@@ -444,10 +444,10 @@ class ApiService {
                 }
             }
             return result.data;
-            
+
         } catch (error) {
-          console.log(error);  
-          return (`erro ao consultar cep:${error.message}`);
+            console.log(error);
+            return (`erro ao consultar cep:${error.message}`);
         }
     }
 
@@ -455,15 +455,15 @@ class ApiService {
         let cepsVerificados = [];
         let cepVerificado;
         let cepInvalido = [];
-        for(let contador = 0; contador < arrCep.length; contador++) {
+        for (let contador = 0; contador < arrCep.length; contador++) {
             cepVerificado = await axios.get(`http://viacep.com.br/ws/${arrCep[contador]}/json/`);
-            if(!cepVerificado.data.erro) {
+            if (!cepVerificado.data.erro) {
                 cepsVerificados.push(cepVerificado.data);
             }
             else {
                 cepInvalido.push(arrCep[contador]);
             }
-        
+
         }
         return {
             cepsVerificados,
@@ -471,19 +471,19 @@ class ApiService {
         }
     }
 
-     async consultarUf(uf) {
-        
+    async consultarUf(uf) {
+
         const arrEstado = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/`);
-        
+
         const ufFiltrada = arrEstado.data.filter(objeto => objeto.sigla.toLowerCase() === uf);
 
-        return  ufFiltrada;
-        
+        return ufFiltrada;
+
     }
 
     async consultarRegiaoNorte(regiao) {
         let regiaoFiltrada = [];
-        
+
         const arrEstado = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/`);
         regiaoFiltrada = arrEstado.data.filter(objeto => objeto.regiao.nome.toLowerCase() === 'norte');
 
@@ -496,57 +496,56 @@ class ApiService {
 
         return estadoFiltrado;
     }
-    
+
     async consultarMunicipios(sigla) {
         try {
             let arrRetornoFormatado = [];
-            
+
             const result = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/${sigla}/municipios`);
             if (result.data.erro) {
                 return {
                     message: 'erro ao consultar municipio'
                 }
             }
-           
-            for(let contador = 0; contador < result.data.length; contador++ )
-            
-            
+
+            for (let contador = 0; contador < result.data.length; contador++)
+
+
                 arrRetornoFormatado.push({
                     nomeMunicipios: result.data[contador].nome,
                     Id: result.data[contador].id
-                })
-            
+                });
+
             return arrRetornoFormatado;
 
-        } catch (error) { 
-          return (`erro ao consultar municipio:${error.message}`);
+        } catch (error) {
+            return (`erro ao consultar municipio:${error.message}`);
         }
     }
 
     async consultarRegiao(regiao) {
         try {
             let arrRetornoFormatado = [];
-            
+
             const result = await axios.get(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/`);
             if (result.data.erro) {
                 return {
                     message: 'erro ao consultar municipio'
                 }
             }
-           
-            for(let contador = 0; contador < result.data.length; contador++ )
-            
-            
+
+            let regiaoFiltrada = result.data.filter(objeto => objeto.regiao.nome.toLowerCase() === regiao);
+            for (let contador = 0; contador < regiaoFiltrada.length; contador++) {
                 arrRetornoFormatado.push({
-                    nomeMunicipios: result.data[contador].nome,
-                    Id: result.data[contador].id,
-                    Regiao: result.data[contador].regiao.nome
-                })
-            
+                    nomeEstado: regiaoFiltrada[contador].nome,
+                    Id: regiaoFiltrada[contador].id,
+                    Regiao: regiaoFiltrada[contador].regiao.nome
+                });
+            }
             return arrRetornoFormatado;
 
-        } catch (error) { 
-          return (`erro ao consultar municipio:${error.message}`);
+        } catch (error) {
+            return (`erro ao consultar municipio:${error.message}`);
         }
     }
 }
