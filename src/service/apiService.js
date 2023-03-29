@@ -572,5 +572,36 @@ class ApiService {
             return (`erro ao consultar municipio:${error.message}`);
         }
     }
+
+
+    async consultarPais(sigla) {
+        try {
+            let arrRetornoFormatado = [];
+
+            const result = await axios.get(`http://servicodados.ibge.gov.br/api/v1/paises/${sigla}`);
+            if (result.data.erro) {
+                return {
+                    message: 'erro ao consultar pais'
+                }
+            }
+
+            
+            return {
+                pais: result.data[0].nome.abreviado,
+                moeda: result.data[0]["unidades-monetarias"][0].nome,
+                continente: result.data[0].localizacao["sub-regiao"].nome,
+                lingua: result.data[0].linguas[0].nome,
+                capital: result.data[0].governo.capital.nome
+                
+                
+            };
+
+        } catch (error) {
+            return (`erro ao consultar pais:${error.message}`);
+        }
+    }
 }
+
+
+
 module.exports = ApiService;

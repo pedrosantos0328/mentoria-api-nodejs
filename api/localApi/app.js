@@ -223,4 +223,10 @@ app.get("/consultarEstados/:estado", async function (request, response) {
     const result = await apiController.consultarEstados(estado);
     return response.json(result);
 });
+
+app.get("/consultarPais/:sigla", async function (request, response) {
+    const sigla = request.params.sigla;
+    const result = await apiController.consultarPais(sigla);
+    return response.json(result);
+});
 module.exports = app;
