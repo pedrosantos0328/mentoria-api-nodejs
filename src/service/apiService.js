@@ -1,4 +1,6 @@
 const axios = require('axios');
+const Database = require('../../database/conectDb');
+const Funcionario = require('../../moldels/funcionariotb');
 class ApiService {
     somar(num1, num2) {
         const soma = num1 + num2;
@@ -585,19 +587,35 @@ class ApiService {
                 }
             }
 
-            
+
             return {
                 pais: result.data[0].nome.abreviado,
                 moeda: result.data[0]["unidades-monetarias"][0].nome,
                 continente: result.data[0].localizacao["sub-regiao"].nome,
                 lingua: result.data[0].linguas[0].nome,
                 capital: result.data[0].governo.capital.nome
-                
-                
+
+
             };
 
         } catch (error) {
             return (`erro ao consultar pais:${error.message}`);
+        }
+    }
+
+    async listarFuncionario() {
+        const db = new Database();
+
+        try {
+            const result = await Funcionario.findAll();
+            if (result) {
+                return result;
+            }
+            return "Informação não encontrada!";
+        }
+        catch (erro) {
+            console.log(erro);
+            return erro;
         }
     }
 }
