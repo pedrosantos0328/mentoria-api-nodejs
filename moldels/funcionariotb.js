@@ -11,11 +11,17 @@ class Funcionario extends Model {
                     field: 'ID_FUNCIONARIO'
 
                 },
-                telefone: {
+                nome: {
                     type: Sequelize.STRING(255),
-                    field: 'TELEFONE',
+                    field: 'NOME',
                     allowNull: false
                 },
+                cargo: {
+                    type: Sequelize.STRING(255),
+                    field: 'CARGO',
+                    allowNull: false
+                },
+                
                 dataNascimento: {
                     type: Sequelize.DATE,
                     field: 'DATA_NASCIMENTO',

@@ -3,10 +3,10 @@ const Sequelize = require('sequelize');
 require('dotenv').config();
 
 const get = () => {
-    const dbName = 'empresa_mentoria_db';
+    const dbName = 'empresa_mentoria';
     const dbUser = 'root';
     const dbPassword = '';
-    const dbHost = '';
+    const dbHost = 'localhost';
     const dbPort = 3306;
     const dbDialect = 'mysql';
    console.log(dbName);
@@ -17,7 +17,7 @@ const get = () => {
       password: dbPassword,
       database: dbName,
       port: dbPort,
-      logging: false,
+      logging: true,
       define: {
         underscored: true,
         underscoredAll: true,
