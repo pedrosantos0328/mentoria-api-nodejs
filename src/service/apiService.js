@@ -1,6 +1,7 @@
 const axios = require('axios');
 const Database = require('../../database/conectDb');
 const Funcionario = require('../../moldels/funcionariotb');
+const {Sequelize} = require('../../config/DB');
 class ApiService {
     somar(num1, num2) {
         const soma = num1 + num2;
@@ -618,7 +619,28 @@ class ApiService {
             return erro;
         }
     }
+
+    async consultarFuncionario(idFuncionario) {
+        const db = new Database();
+
+        try {
+            const result = await Funcionario.findOne({
+                where: {
+                    idFuncionario: idFuncionario
+                }
+            });
+            if (result) {
+                return result;
+            }
+            return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
 }
+
+
 
 
 

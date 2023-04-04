@@ -120,5 +120,9 @@ class ApiController {
     async listarFuncionario() {
         return await apiService.listarFuncionario();
     }
+
+    async consultarFuncionario(idFuncionario) {
+        return await apiService.consultarFuncionario(idFuncionario);
+    }
 }
 module.exports = ApiController;
