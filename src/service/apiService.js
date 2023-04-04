@@ -1,7 +1,8 @@
 const axios = require('axios');
 const Database = require('../../database/conectDb');
 const Funcionario = require('../../moldels/funcionariotb');
-const {Sequelize} = require('../../config/DB');
+const { Sequelize } = require('../../config/DB');
+const { Op } = require('../../config/DB');
 class ApiService {
     somar(num1, num2) {
         const soma = num1 + num2;
@@ -633,6 +634,46 @@ class ApiService {
                 return result;
             }
             return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
+
+    async consultarNomeFuncionario(nome) {
+        const db = new Database();
+
+        try {
+            const result = await Funcionario.findOne({
+                where: {
+                    nome: {
+                        [Op.like]: `%${nome}%`
+                    }
+                }
+            });
+            if (result) {
+                return result;
+            }
+            return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
+
+    async consultarCargo(cargo) {
+        const db = new Database();
+
+        try {
+            const result = await Funcionario.findAll({
+                where: {
+                    cargo: cargo
+                }
+            });
+            if (result) {
+                return result;
+            }
+            return "Informação não encontrada";
         }
         catch (erro) {
             return erro;

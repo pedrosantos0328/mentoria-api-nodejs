@@ -240,4 +240,16 @@ app.get("/consultarFuncionario/:idFuncionario", async function (request, respons
     const result = await apiController.consultarFuncionario(idFuncionario);
     return response.json(result);
 });
+
+app.get("/consultarNomeFuncionario/:nome", async function (request, response) {
+    const nome = request.params.nome;
+    const result = await apiController.consultarNomeFuncionario(nome);
+    return response.json(result);
+});
+
+app.get("/consultarCargo/:cargo", async function (request, response) {
+    const cargo = request.params.cargo;
+    const result = await apiController.consultarCargo(cargo);
+    return response.json(result);
+});
 module.exports = app;
