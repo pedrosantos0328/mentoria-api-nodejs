@@ -679,6 +679,32 @@ class ApiService {
             return erro;
         }
     }
+
+    async verificarFuncionarios(cargo, endereco) {
+        const db = new Database();
+        
+        try {
+            const result = await Funcionario.findAll({
+                
+                where: {
+                    cargo: cargo,
+                    endereco: {
+                        [Op.like]: `%${endereco}%`
+                    }
+                }
+            });
+            if (result) {
+                return {
+                    quantidadeFuncionario: result.length,
+                    listaFuncionarios: result
+                }
+            }
+            return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
 }
 
 

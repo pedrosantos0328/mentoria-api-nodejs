@@ -252,4 +252,11 @@ app.get("/consultarCargo/:cargo", async function (request, response) {
     const result = await apiController.consultarCargo(cargo);
     return response.json(result);
 });
+
+app.get("/verificarFuncionarios/:cargo/:endereco", async function (request, response) {
+    const cargo = request.params.cargo;
+    const endereco = request.params.endereco;
+    const result = await apiController.verificarFuncionarios(cargo, endereco);
+    return response.json(result);
+});
 module.exports = app;

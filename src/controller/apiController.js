@@ -132,5 +132,9 @@ class ApiController {
     async consultarCargo(cargo) {
         return await apiService.consultarCargo(cargo);
     }
+
+    async verificarFuncionarios(cargo, endereco) {
+        return await apiService.verificarFuncionarios(cargo, endereco);
+    }
 }
 module.exports = ApiController;

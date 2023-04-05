@@ -27,6 +27,12 @@ class Funcionario extends Model {
                     field: 'DATA_NASCIMENTO',
                     allowNull: false
                 },
+
+                endereco: {
+                    type: Sequelize.STRING(255),
+                    field: 'ENDERECO',
+                    allowNull: false
+                }
             },
             {
                 sequelize,
