@@ -44,4 +44,5 @@ class Funcionario extends Model {
         return this;
     }
 }
+
 module.exports = Funcionario

@@ -259,4 +259,9 @@ app.get("/verificarFuncionarios/:cargo/:endereco", async function (request, resp
     const result = await apiController.verificarFuncionarios(cargo, endereco);
     return response.json(result);
 });
+
+app.get("/listar-departamento", async function (request, response) {
+    const result = await apiController.listarDepartamento();
+    return response.json(result);
+});
 module.exports = app;

@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
 const databaseConfig = require('../config/DB');
 const FuncionarioTb = require('../moldels/funcionariotb');
- 
-const models = [FuncionarioTb];
+const DepartamentoTb = require('../moldels/departamentotb');
+const models = [FuncionarioTb, DepartamentoTb];
  
 class Database {
   constructor() {
