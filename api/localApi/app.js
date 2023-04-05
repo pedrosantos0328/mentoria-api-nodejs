@@ -264,4 +264,10 @@ app.get("/listar-departamento", async function (request, response) {
     const result = await apiController.listarDepartamento();
     return response.json(result);
 });
+
+app.get("/verificarDepartamento/:departamento", async function (request, response) {
+    const departamento = request.params.departamento;
+    const result = await apiController.verificarDepartamento(departamento);
+    return response.json(result);
+});
 module.exports = app;

@@ -721,6 +721,25 @@ class ApiService {
             return erro;
         }
     }
+
+    async verificarDepartamento(departamento) {
+        const db = new Database();
+
+        try {
+            const result = await Departamento.findOne({
+                where: {
+                    departamento: departamento
+                }
+            });
+            if (result) {
+                return result;
+            }
+            return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
 }
 
 

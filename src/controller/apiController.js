@@ -141,6 +141,10 @@ class ApiController {
         return await apiService.listarDepartamento();
     }
 
+    async verificarDepartamento(departamento) {
+        return await apiService.verificarDepartamento(departamento);
+    }
+
     
 }
 module.exports = ApiController;
