@@ -270,4 +270,9 @@ app.get("/verificarDepartamento/:departamento", async function (request, respons
     const result = await apiController.verificarDepartamento(departamento);
     return response.json(result);
 });
+
+app.get("/lista-funcionario-departamento", async function (request, response) {
+    const result = await apiController.listaFuncionarioDepartamento();
+    return response.json(result);
+});
 module.exports = app;

@@ -19,8 +19,8 @@ const get = () => {
       port: dbPort,
       logging: true,
       define: {
-        underscored: true,
-        underscoredAll: true,
+        underscored: false,
+        underscoredAll: false,
         freezeTableName: true,
         timestamps: true,
       },

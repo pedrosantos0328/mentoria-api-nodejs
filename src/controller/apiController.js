@@ -145,6 +145,10 @@ class ApiController {
         return await apiService.verificarDepartamento(departamento);
     }
 
+    async listaFuncionarioDepartamento() {
+        return await apiService.listaFuncionarioDepartamento();
+    }
+
     
 }
 module.exports = ApiController;

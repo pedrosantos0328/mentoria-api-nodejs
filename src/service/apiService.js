@@ -683,10 +683,10 @@ class ApiService {
 
     async verificarFuncionarios(cargo, endereco) {
         const db = new Database();
-        
+
         try {
             const result = await Funcionario.findAll({
-                
+
                 where: {
                     cargo: cargo,
                     endereco: {
@@ -735,6 +735,40 @@ class ApiService {
                 return result;
             }
             return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
+
+    async listaFuncionarioDepartamento() {
+        const db = new Database();
+        let arrRetornoFormatado = [];
+        
+        try {
+            const result = await Funcionario.findAll({
+                include: [
+                    {
+                        model: Departamento,
+                        as: "departamento"
+                    }
+                ],
+                nest: true,
+                raw: true
+            });
+            if (result.erro) {
+                return {
+                    message: "Informação não encontrada!"
+                }
+            }
+            for (let contador = 0; contador < result.length; contador++) {
+                arrRetornoFormatado.push({
+                    Id: result[contador].idFuncionario,
+                    Nome: result[contador].nome,
+                    Departamento: result[contador].departamento.departamento
+                });
+            }
+            return arrRetornoFormatado;
         }
         catch (erro) {
             return erro;

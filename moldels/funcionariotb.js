@@ -32,7 +32,12 @@ class Funcionario extends Model {
                     type: Sequelize.STRING(255),
                     field: 'ENDERECO',
                     allowNull: false
+                },
+                idDepartamento: {
+                    type: Sequelize.BIGINT,
+                    field: 'ID_DEPARTAMENTO'  
                 }
+
             },
             {
                 sequelize,
@@ -42,6 +47,12 @@ class Funcionario extends Model {
             }
         );
         return this;
+    }
+    static associate (models) {
+        this.belongsTo(models.DEPARTAMENTO_TB,{
+            foreignKey: "ID_DEPARTAMENTO",
+            as: "departamento"
+        });
     }
 }
 
