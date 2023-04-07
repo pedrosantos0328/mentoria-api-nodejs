@@ -756,19 +756,20 @@ class ApiService {
                 nest: true,
                 raw: true
             });
-            if (result.erro) {
-                return {
-                    message: "Informação não encontrada!"
+            if (result) {
+                
+                for (let contador = 0; contador < result.length; contador++) {
+                    arrRetornoFormatado.push({
+                        Id: result[contador].idFuncionario,
+                        Nome: result[contador].nome,
+                        Departamento: result[contador].departamento.departamento
+                    });
                 }
+                return arrRetornoFormatado;
             }
-            for (let contador = 0; contador < result.length; contador++) {
-                arrRetornoFormatado.push({
-                    Id: result[contador].idFuncionario,
-                    Nome: result[contador].nome,
-                    Departamento: result[contador].departamento.departamento
-                });
+            return {
+                message: "Informação não encontrada!"
             }
-            return arrRetornoFormatado;
         }
         catch (erro) {
             return erro;
