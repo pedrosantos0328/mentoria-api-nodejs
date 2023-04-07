@@ -807,6 +807,38 @@ class ApiService {
             return erro;
         }
         }
+
+        async consultarDepartamentoFuncionario(idDepartamento) {
+            const db = new Database();
+    
+            try {
+                const result = await Funcionario.findOne({
+                    include: [
+                        {
+                            model: Departamento,
+                            as: "departamento"
+                        }
+                    ],
+                    nest: true,
+                    raw: true,
+    
+                    where: {
+                        idDepartamento: idDepartamento
+                    }
+                });
+                if (result) {
+                    return {
+                        id: result.idDepartamento,
+                        nome: result.nome,
+                        departamento: result.departamento.departamento
+                    }
+                }
+                return "Informação não encontrada!";
+            }
+            catch (erro) {
+                return erro;
+            }
+            }
     }
 
 
