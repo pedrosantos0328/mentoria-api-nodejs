@@ -2,6 +2,7 @@ const axios = require('axios');
 const Database = require('../../database/conectDb');
 const Funcionario = require('../../moldels/funcionariotb');
 const Departamento = require('../../moldels/departamentotb');
+const Gerencia = require('../../moldels/gerenciatb');
 const { Sequelize } = require('../../config/DB');
 const { Op } = require('../../config/DB');
 class ApiService {
@@ -838,6 +839,21 @@ class ApiService {
             catch (erro) {
                 return erro;
             }
+            }
+
+            async listarGerencia() {
+                const db = new Database();
+        
+                try {
+                    const result = await Gerencia.findAll();
+                    if (result) {
+                        return result;
+                    }
+                    return "Informação não encontrada!";
+                }
+                catch (erro) {
+                    return erro;
+                }
             }
     }
 

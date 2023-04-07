@@ -36,6 +36,15 @@ class Funcionario extends Model {
                 idDepartamento: {
                     type: Sequelize.BIGINT,
                     field: 'ID_DEPARTAMENTO'  
+                },
+                idGerente: {
+                    type: Sequelize.BIGINT,
+                    field: 'ID_GERENCIA'
+                },
+                nomeGerente: {
+                    type: Sequelize.STRING(255),
+                    field: 'NOME_GERENTE',
+                    allowNull: false
                 }
 
             },
@@ -52,6 +61,12 @@ class Funcionario extends Model {
         this.belongsTo(models.DEPARTAMENTO_TB,{
             foreignKey: "ID_DEPARTAMENTO",
             as: "departamento"
+        });
+    }
+    static associate (models) {
+        this.belongsTo(models.GERENCIA_TB,{
+            foreignKey: "ID_GERENTE",
+            as: "gerente"
         });
     }
 }

@@ -287,4 +287,9 @@ app.get("/consultarDepartamentoFuncionario/:idDepartamento", async function (req
     const result = await apiController.consultarDepartamentoFuncionario(idDepartamento);
     return response.json(result);
 });
+
+app.get("/listar-gerencia", async function (request, response) {
+    const result = await apiController.listarGerencia();
+    return response.json(result);
+});
 module.exports = app;
