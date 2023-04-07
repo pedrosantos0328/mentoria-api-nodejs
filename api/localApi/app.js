@@ -275,4 +275,10 @@ app.get("/lista-funcionario-departamento", async function (request, response) {
     const result = await apiController.listaFuncionarioDepartamento();
     return response.json(result);
 });
+
+app.get("/consultarFuncionarioDepartamento/:idFuncionario", async function (request, response) {
+    const idFuncionario = request.params.idFuncionario;
+    const result = await apiController.consultarFuncionarioDepartamento(idFuncionario);
+    return response.json(result);
+});
 module.exports = app;
