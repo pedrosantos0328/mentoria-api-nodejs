@@ -39,12 +39,7 @@ class Funcionario extends Model {
                 },
                 idGerente: {
                     type: Sequelize.BIGINT,
-                    field: 'ID_GERENCIA'
-                },
-                nomeGerente: {
-                    type: Sequelize.STRING(255),
-                    field: 'NOME_GERENTE',
-                    allowNull: false
+                    field: 'ID_GERENTE'
                 }
 
             },

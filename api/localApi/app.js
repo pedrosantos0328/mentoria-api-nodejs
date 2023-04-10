@@ -292,4 +292,9 @@ app.get("/listar-gerencia", async function (request, response) {
     const result = await apiController.listarGerencia();
     return response.json(result);
 });
+
+app.get("/listar-funcionario-gerente", async function (request, response) {
+    const result = await apiController.listarFuncionarioGerente();
+    return response.json(result);
+});
 module.exports = app;

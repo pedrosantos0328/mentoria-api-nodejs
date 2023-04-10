@@ -855,6 +855,42 @@ class ApiService {
                     return erro;
                 }
             }
+
+            async listarFuncionarioGerente() {
+                const db = new Database();
+                let arrRetornoFormatado = [];
+                
+                try {
+                    const result = await Funcionario.findAll({
+                        include: [
+                            {
+                                model: Gerencia,
+                                as: "gerente"
+                            }
+                        ],
+                        nest: true,
+                        raw: true
+                    });
+                    if (result) {
+                        
+                        for (let contador = 0; contador < result.length; contador++) {
+                            arrRetornoFormatado.push({
+                                idFuncionario: result[contador].idFuncionario,
+                                Nome: result[contador].nome,
+                                idGerente: result[contador].gerente.idGerente,
+                                nomeGerente: result[contador].gerente.nomeGerente
+                            });
+                        }
+                        return arrRetornoFormatado;
+                    }
+                    return {
+                        message: "Informação não encontrada!"
+                    }
+                }
+                catch (erro) {
+                    return erro;
+                }
+            }
     }
 
 
