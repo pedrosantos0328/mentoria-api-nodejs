@@ -779,7 +779,7 @@ class ApiService {
 
     async consultarFuncionarioDepartamento(idFuncionario) {
         const db = new Database();
-
+        
         try {
             const result = await Funcionario.findOne({
                 include: [
@@ -891,6 +891,75 @@ class ApiService {
                     return erro;
                 }
             }
+
+            async verificarFuncionarios(cargo, endereco) {
+        const db = new Database();
+
+        try {
+            const result = await Funcionario.findAll({
+
+                where: {
+                    cargo: cargo,
+                    endereco: {
+                        [Op.like]: `%${endereco}%`
+                    }
+                }
+            });
+            if (result) {
+                return {
+                    quantidadeFuncionario: result.length,
+                    listaFuncionarios: result
+                }
+            }
+            return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
+
+        async listarFuncionarioGerentePorId(idGerente) {
+        const db = new Database();
+        let arrRetornoFormatado = [];
+        try {
+            const result = await Funcionario.findAll({
+                include: [
+                    {
+                        model: Gerencia,
+                        as: "gerente",
+                    },
+                     {
+                         model: Departamento,
+                         as: "departamento"
+                     }
+                ],
+                where: {
+                    idGerente: idGerente
+                },
+                nest: true,
+                raw: true,
+            });
+            if (result) {
+                for (let contador = 0; contador < result.length; contador++) {
+                    arrRetornoFormatado.push({
+                        idFuncionario: result[contador].idFuncionario,
+                        nomeFuncionario: result[contador].nome,
+                        cargoFuncionario: result[contador].cargo,
+                        departamento: result[contador].departamento.departamento,
+                        nomeGerente: result[contador].gerente.nomeGerente
+                    });
+
+                }
+                return arrRetornoFormatado;
+            }
+            return {
+                message: "Informação não encontrada!"
+            }
+        }
+        catch (erro) {
+            return erro;
+        }
+        }
     }
 
 

@@ -297,4 +297,10 @@ app.get("/listar-funcionario-gerente", async function (request, response) {
     const result = await apiController.listarFuncionarioGerente();
     return response.json(result);
 });
+
+app.get("/listar-funcionario-gerente-por-id/:idGerente", async function (request, response) {
+    const idGerente = request.params.idGerente;
+    const result = await apiController.listarFuncionarioGerentePorId(idGerente);
+    return response.json(result);
+});
 module.exports = app;

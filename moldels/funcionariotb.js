@@ -57,13 +57,12 @@ class Funcionario extends Model {
             foreignKey: "ID_DEPARTAMENTO",
             as: "departamento"
         });
-    }
-    static associate (models) {
         this.belongsTo(models.GERENCIA_TB,{
             foreignKey: "ID_GERENTE",
             as: "gerente"
         });
     }
+    
 }
 
 module.exports = Funcionario
