@@ -40,6 +40,10 @@ class Funcionario extends Model {
                 idGerente: {
                     type: Sequelize.BIGINT,
                     field: 'ID_GERENTE'
+                },
+                idEstadoCivil: {
+                    type: Sequelize.BIGINT,
+                    field: 'ID_ESTADO_CIVIL'
                 }
 
             },
@@ -60,6 +64,10 @@ class Funcionario extends Model {
         this.belongsTo(models.GERENCIA_TB,{
             foreignKey: "ID_GERENTE",
             as: "gerente"
+        });
+        this.belongsTo(models.ESTADO_CIVIL_TB,{
+            foreignKey: "ID_ESTADO_CIVIL",
+            as: "estadoCivil"
         });
     }
     

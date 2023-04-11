@@ -3,6 +3,7 @@ const Database = require('../../database/conectDb');
 const Funcionario = require('../../moldels/funcionariotb');
 const Departamento = require('../../moldels/departamentotb');
 const Gerencia = require('../../moldels/gerenciatb');
+const Estado_Civil = require('../../moldels/estado_civil_tb');
 const { Sequelize } = require('../../config/DB');
 const { Op } = require('../../config/DB');
 class ApiService {
@@ -960,6 +961,22 @@ class ApiService {
             return erro;
         }
         }
+
+        async listarEstadoCivil() {
+            const db = new Database();
+    
+            try {
+                const result = await Estado_Civil.findAll();
+                if (result) {
+                    return result;
+                }
+                return "Informação não encontrada!";
+            }
+            catch (erro) {
+                return erro;
+            }
+        }
+
     }
 
 

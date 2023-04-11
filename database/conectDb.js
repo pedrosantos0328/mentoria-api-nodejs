@@ -3,7 +3,8 @@ const databaseConfig = require('../config/DB');
 const FuncionarioTb = require('../moldels/funcionariotb');
 const DepartamentoTb = require('../moldels/departamentotb');
 const GerenciaTb = require('../moldels/gerenciatb');
-const models = [FuncionarioTb, DepartamentoTb, GerenciaTb];
+const ESTADO_CIVIL_TB = require('../moldels/estado_civil_tb');
+const models = [FuncionarioTb, DepartamentoTb, GerenciaTb, ESTADO_CIVIL_TB];
  
 class Database {
   constructor() {
