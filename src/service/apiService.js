@@ -747,7 +747,7 @@ class ApiService {
     async listaFuncionarioDepartamento() {
         const db = new Database();
         let arrRetornoFormatado = [];
-        
+
         try {
             const result = await Funcionario.findAll({
                 include: [
@@ -760,7 +760,7 @@ class ApiService {
                 raw: true
             });
             if (result) {
-                
+
                 for (let contador = 0; contador < result.length; contador++) {
                     arrRetornoFormatado.push({
                         Id: result[contador].idFuncionario,
@@ -781,7 +781,7 @@ class ApiService {
 
     async consultarFuncionarioDepartamento(idFuncionario) {
         const db = new Database();
-        
+
         try {
             const result = await Funcionario.findOne({
                 include: [
@@ -809,92 +809,92 @@ class ApiService {
         catch (erro) {
             return erro;
         }
+    }
+
+    async consultarDepartamentoFuncionario(idDepartamento) {
+        const db = new Database();
+
+        try {
+            const result = await Funcionario.findOne({
+                include: [
+                    {
+                        model: Departamento,
+                        as: "departamento"
+                    }
+                ],
+                nest: true,
+                raw: true,
+
+                where: {
+                    idDepartamento: idDepartamento
+                }
+            });
+            if (result) {
+                return {
+                    id: result.idDepartamento,
+                    nome: result.nome,
+                    departamento: result.departamento.departamento
+                }
+            }
+            return "Informação não encontrada!";
         }
+        catch (erro) {
+            return erro;
+        }
+    }
 
-        async consultarDepartamentoFuncionario(idDepartamento) {
-            const db = new Database();
-    
-            try {
-                const result = await Funcionario.findOne({
-                    include: [
-                        {
-                            model: Departamento,
-                            as: "departamento"
-                        }
-                    ],
-                    nest: true,
-                    raw: true,
-    
-                    where: {
-                        idDepartamento: idDepartamento
-                    }
-                });
-                if (result) {
-                    return {
-                        id: result.idDepartamento,
-                        nome: result.nome,
-                        departamento: result.departamento.departamento
-                    }
-                }
-                return "Informação não encontrada!";
-            }
-            catch (erro) {
-                return erro;
-            }
-            }
+    async listarGerencia() {
+        const db = new Database();
 
-            async listarGerencia() {
-                const db = new Database();
-        
-                try {
-                    const result = await Gerencia.findAll();
-                    if (result) {
-                        return result;
-                    }
-                    return "Informação não encontrada!";
-                }
-                catch (erro) {
-                    return erro;
-                }
+        try {
+            const result = await Gerencia.findAll();
+            if (result) {
+                return result;
             }
+            return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
 
-            async listarFuncionarioGerente() {
-                const db = new Database();
-                let arrRetornoFormatado = [];
-                
-                try {
-                    const result = await Funcionario.findAll({
-                        include: [
-                            {
-                                model: Gerencia,
-                                as: "gerente"
-                            }
-                        ],
-                        nest: true,
-                        raw: true
+    async listarFuncionarioGerente() {
+        const db = new Database();
+        let arrRetornoFormatado = [];
+
+        try {
+            const result = await Funcionario.findAll({
+                include: [
+                    {
+                        model: Gerencia,
+                        as: "gerente"
+                    }
+                ],
+                nest: true,
+                raw: true
+            });
+            if (result) {
+
+                for (let contador = 0; contador < result.length; contador++) {
+                    arrRetornoFormatado.push({
+                        idFuncionario: result[contador].idFuncionario,
+                        Nome: result[contador].nome,
+                        idGerente: result[contador].gerente.idGerente,
+                        nomeGerente: result[contador].gerente.nomeGerente
                     });
-                    if (result) {
-                        
-                        for (let contador = 0; contador < result.length; contador++) {
-                            arrRetornoFormatado.push({
-                                idFuncionario: result[contador].idFuncionario,
-                                Nome: result[contador].nome,
-                                idGerente: result[contador].gerente.idGerente,
-                                nomeGerente: result[contador].gerente.nomeGerente
-                            });
-                        }
-                        return arrRetornoFormatado;
-                    }
-                    return {
-                        message: "Informação não encontrada!"
-                    }
                 }
-                catch (erro) {
-                    return erro;
-                }
+                return arrRetornoFormatado;
             }
+            return {
+                message: "Informação não encontrada!"
+            }
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
 
-            async verificarFuncionarios(cargo, endereco) {
+    async verificarFuncionarios(cargo, endereco) {
         const db = new Database();
 
         try {
@@ -920,7 +920,7 @@ class ApiService {
         }
     }
 
-        async listarFuncionarioGerentePorId(idGerente) {
+    async listarFuncionarioGerentePorId(idGerente) {
         const db = new Database();
         let arrRetornoFormatado = [];
         try {
@@ -930,10 +930,10 @@ class ApiService {
                         model: Gerencia,
                         as: "gerente",
                     },
-                     {
-                         model: Departamento,
-                         as: "departamento"
-                     }
+                    {
+                        model: Departamento,
+                        as: "departamento"
+                    }
                 ],
                 where: {
                     idGerente: idGerente
@@ -961,68 +961,83 @@ class ApiService {
         catch (erro) {
             return erro;
         }
-        }
+    }
 
-        async listarEstadoCivil() {
-            const db = new Database();
-    
-            try {
-                const result = await Estado_Civil.findAll();
-                if (result) {
-                    return result;
-                }
-                return "Informação não encontrada!";
-            }
-            catch (erro) {
-                return erro;
-            }
-        }
+    async listarEstadoCivil() {
+        const db = new Database();
 
-        async listarFuncionarioEstadoCivil() {
-            const db = new Database();
-            let arrRetornoFormatado = [];
-            
-            try {
-                const result = await Funcionario.findAll({
-                    include: [
-                        {
-                            model: estadoCivil,
-                            as: "estadoCivil"
-                        }
-                    ],
-                    nest: true,
-                    raw: true,
-                });
-                if (result) {
-                
+        try {
+            const result = await Estado_Civil.findAll();
+            if (result) {
+                return result;
+            }
+            return "Informação não encontrada!";
+        }
+        catch (erro) {
+            return erro;
+        }
+    }
+
+    async listarFuncionarioEstadoCivil() {
+        const db = new Database();
+        let arrRetornoFormatado = [];
+
+        try {
+            const result = await Funcionario.findAll({
+                include: [
+                    {
+                        model: estadoCivil,
+                        as: "estadoCivil"
+                    }
+                ],
+                nest: true,
+                raw: true,
+            });
+            if (result) {
+
                 result.forEach(item => {
                     let idFuncionario = item.idFuncionario;
                     let nome = item.nome;
                     let estadoCivil = item.estadoCivil.estadoCivil;
-        
+
                     arrRetornoFormatado.push({
-                            idFuncionario: idFuncionario,
-                            nomeFuncionario: nome,
-                            estadoCivil: estadoCivil
-                });
+                        idFuncionario: idFuncionario,
+                        nomeFuncionario: nome,
+                        estadoCivil: estadoCivil
+                    });
                 });
 
-                return  arrRetornoFormatado
+                return arrRetornoFormatado
             }
-                        
-                return {
-                    message: "Informação não encontrada!"
-                }
-            }
-            catch (erro) {
-                return erro;
+
+            return {
+                message: "Informação não encontrada!"
             }
         }
-
-
+        catch (erro) {
+            return erro;
+        }
     }
 
+    async criarFuncionario(body) {
+        const db = new Database();
+        try {
+            const {nome, cpf, cargo, endereco, dataNascimento, idDepartamento, idGerente, idEstadoCivil} = body;
+            const insert = await Funcionario.create({nome, cpf, cargo, endereco, dataNascimento, idDepartamento, idGerente, idEstadoCivil});
+            if(insert) {
+                return {
+                message:  `Funcionário ${nome} foi incluido com sucesso`
+                }
+            }
+            return {
+                message: "Falha ao incluir funcionário"
+            };
+        }catch (erro) {
+            return erro;
+        }
+    }
 
+}
 
 
 

@@ -313,4 +313,10 @@ app.get("/listar-funcionario-estado-civil", async function (request, response) {
     const result = await apiController.listarFuncionarioEstadoCivil();
     return response.json(result);
 });
+
+app.post("/criar-funcionario", async function (req, res) {
+    const body = req.body;
+    const result = await apiController.criarFuncionario(body);
+    return res.json(result);
+});
 module.exports = app;

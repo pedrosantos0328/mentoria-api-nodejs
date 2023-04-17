@@ -16,6 +16,11 @@ class Funcionario extends Model {
                     field: 'NOME',
                     allowNull: false
                 },
+                cpf: {
+                    type: Sequelize.STRING(11),
+                    field: 'CPF',
+                    allowNull: false
+                },
                 cargo: {
                     type: Sequelize.STRING(255),
                     field: 'CARGO',

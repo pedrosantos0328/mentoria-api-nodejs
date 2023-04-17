@@ -176,5 +176,9 @@ class ApiController {
     async listarFuncionarioEstadoCivil() {
         return await apiService.listarFuncionarioEstadoCivil();
     }
+
+    async criarFuncionario(body) {
+        return await apiService.criarFuncionario(body);
+    }
 }
 module.exports = ApiController;
