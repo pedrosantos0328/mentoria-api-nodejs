@@ -331,4 +331,11 @@ app.post("/criar-gerente", async function (req, res) {
     const result = await apiController.criarGerente(body);
     return res.json(result);
 });
+
+app.put("/alterar-funcionario/:idFuncionario", async function (req, res) {
+    const body = req.body;
+    const idFuncionario = req.params.idFuncionario;
+    const result = await apiController.alterarFuncionario(idFuncionario, body);
+    return res.json(result);   
+});
 module.exports = app;

@@ -188,5 +188,9 @@ class ApiController {
     async criarGerente(body) {
         return await apiService.criarGerente(body);
     }
+
+    async alterarFuncionario(idFuncionario, body) {
+        return await apiService.alterarFuncionario(idFuncionario, body);
+    }
 }
 module.exports = ApiController;
