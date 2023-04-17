@@ -993,22 +993,22 @@ class ApiService {
                     nest: true,
                     raw: true,
                 });
+                if (result) {
+                
                 result.forEach(item => {
                     let idFuncionario = item.idFuncionario;
                     let nome = item.nome;
                     let estadoCivil = item.estadoCivil.estadoCivil;
         
-                    if (result) {
-                        arrRetornoFormatado.push({
+                    arrRetornoFormatado.push({
                             idFuncionario: idFuncionario,
                             nomeFuncionario: nome,
                             estadoCivil: estadoCivil
                 });
-                    }
                 });
 
                 return  arrRetornoFormatado
-                
+            }
                         
                 return {
                     message: "Informação não encontrada!"
