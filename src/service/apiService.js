@@ -1095,6 +1095,50 @@ class ApiService {
         }
     }
 
+    async alterarGerente(idGerente, body) {
+        const db = new Database();
+        try {
+            const { nomeGerente} = body;
+            const update = await Gerencia.update({ nomeGerente }, {
+                where: {
+                    idGerente: idGerente
+                }
+            });
+            if (update) {
+                return {
+                    message: `Dados do ${nomeGerente} foi alterado com sucesso`
+                }
+            }
+            return {
+                message: "Falha ao alterar Gerente"
+            };
+        } catch (erro) {
+            return erro;
+        }
+    }
+
+    async alterarDepartamento(idDepartamento, body) {
+        const db = new Database();
+        try {
+            const {departamento} = body;
+            const update = await Departamento.update({ departamento }, {
+                where: {
+                    idDepartamento: idDepartamento
+                }
+            });
+            if (update) {
+                return {
+                    message: `Dados do ${departamento} foi alterado com sucesso`
+                }
+            }
+            return {
+                message: "Falha ao alterar Departamento"
+            };
+        } catch (erro) {
+            return erro;
+        }
+    }
+
 }
 
 

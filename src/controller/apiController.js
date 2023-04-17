@@ -192,5 +192,14 @@ class ApiController {
     async alterarFuncionario(idFuncionario, body) {
         return await apiService.alterarFuncionario(idFuncionario, body);
     }
+
+    async alterarGerente(idGerente, body) {
+        return await apiService.alterarGerente(idGerente, body);
+    }
+
+    async alterarDepartamento(idDepartamento, body) {
+        console.log("chegou aqui");
+        return await apiService.alterarDepartamento(idDepartamento, body);
+    }
 }
 module.exports = ApiController;

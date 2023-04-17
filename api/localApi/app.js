@@ -338,4 +338,19 @@ app.put("/alterar-funcionario/:idFuncionario", async function (req, res) {
     const result = await apiController.alterarFuncionario(idFuncionario, body);
     return res.json(result);   
 });
+
+app.put("/alterar-gerente/:idGerente", async function (req, res) {
+    const body = req.body;
+    const idGerente = req.params.idGerente;
+    const result = await apiController.alterarGerente(idGerente, body);
+    return res.json(result);
+});
+
+app.put("/alterar-departamento/:idDepartamento", async function (req, res) {
+    console.log(req.body);
+    const body = req.body;
+    const idDepartamento = req.params.idDepartamento;
+    const result = await apiController.alterarDepartamento(idDepartamento, body);
+    return res.json(result);
+});
 module.exports = app;
