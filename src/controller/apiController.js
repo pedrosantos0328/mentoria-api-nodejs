@@ -205,5 +205,13 @@ class ApiController {
     async deletarFuncionario(idFuncionario) {
         return await apiService.deletarFuncionario(idFuncionario);
     }
+
+    async deletarGerente(idGerente) {
+        return await apiService.deletarGerente(idGerente);
+    }
+
+    async deletarDepartamento(idDepartamento) {
+        return await apiService.deletarDepartamento(idDepartamento);
+    }
 }
 module.exports = ApiController;

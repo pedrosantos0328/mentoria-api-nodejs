@@ -1161,6 +1161,48 @@ class ApiService {
         }
     }
 
+    async deletarGerente(idGerente) {
+        const db = new Database();
+        try {
+            const dell = await Gerencia.destroy({
+                where: {
+                    idGerente: idGerente
+                }
+            });
+            if (dell) {
+                return {
+                    message: `Dados do Gerente foi deletado com sucesso`
+                }
+            }
+            return {
+                message: "Falha ao deletar Gerente"
+            };
+        } catch (erro) {
+            return erro;
+        }
+    }
+
+    async deletarDepartamento(idDepartamento) {
+        const db = new Database();
+        try {
+            const dell = await Departamento.destroy({
+                where: {
+                    idDepartamento: idDepartamento
+                }
+            });
+            if (dell) {
+                return {
+                    message: `Dados do departamento foi deletado com sucesso`
+                }
+            }
+            return {
+                message: "Falha ao deletar departamento"
+            };
+        } catch (erro) {
+            return erro;
+        }
+    }
+
 }
 
 

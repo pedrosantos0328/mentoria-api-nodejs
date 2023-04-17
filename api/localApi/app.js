@@ -359,4 +359,16 @@ app.delete("/deletar-funcionario/:idFuncionario", async function (req, res) {
     const result = await apiController.deletarFuncionario(idFuncionario);
     return res.json(result);
 });
+
+app.delete("/deletar-gerente/:idGerente", async function (req, res) {
+    const idGerente = req.params.idGerente;
+    const result = await apiController.deletarGerente(idGerente);
+    return res.json(result);
+});
+
+app.delete("/deletar-departamento/:idDepartamento", async function (req, res) {
+    const idDepartamento = req.params.idDepartamento;
+    const result = await apiController.deletarDepartamento(idDepartamento);
+    return res.json(result);
+});
 module.exports = app;
