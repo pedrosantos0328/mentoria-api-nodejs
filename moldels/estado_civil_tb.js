@@ -1,6 +1,6 @@
 const { Sequelize, Model } = require('sequelize');
 
-class estado_civil extends Model {
+class estadoCivil extends Model {
     static init(sequelize) {
         super.init(
             {
@@ -27,4 +27,4 @@ class estado_civil extends Model {
         return this;
     }
 }
-module.exports = estado_civil
+module.exports = estadoCivil

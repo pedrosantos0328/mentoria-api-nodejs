@@ -307,5 +307,10 @@ app.get("/listar-funcionario-gerente-por-id/:idGerente", async function (request
 app.get("/listar-estado-civil", async function (request, response) {
     const result = await apiController.listarEstadoCivil();
     return response.json(result);
-})
+});
+
+app.get("/listar-funcionario-estado-civil", async function (request, response) {
+    const result = await apiController.listarFuncionarioEstadoCivil();
+    return response.json(result);
+});
 module.exports = app;

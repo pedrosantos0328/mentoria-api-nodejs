@@ -6,6 +6,7 @@ const Gerencia = require('../../moldels/gerenciatb');
 const Estado_Civil = require('../../moldels/estado_civil_tb');
 const { Sequelize } = require('../../config/DB');
 const { Op } = require('../../config/DB');
+const estadoCivil = require('../../moldels/estado_civil_tb');
 class ApiService {
     somar(num1, num2) {
         const soma = num1 + num2;
@@ -976,6 +977,48 @@ class ApiService {
                 return erro;
             }
         }
+
+        async listarFuncionarioEstadoCivil() {
+            const db = new Database();
+            let arrRetornoFormatado = [];
+            
+            try {
+                const result = await Funcionario.findAll({
+                    include: [
+                        {
+                            model: estadoCivil,
+                            as: "estadoCivil"
+                        }
+                    ],
+                    nest: true,
+                    raw: true,
+                });
+                result.forEach(item => {
+                    let idFuncionario = item.idFuncionario;
+                    let nome = item.nome;
+                    let estadoCivil = item.estadoCivil.estadoCivil;
+        
+                    if (result) {
+                        arrRetornoFormatado.push({
+                            idFuncionario: idFuncionario,
+                            nomeFuncionario: nome,
+                            estadoCivil: estadoCivil
+                });
+                    }
+                });
+
+                return  arrRetornoFormatado
+                
+                        
+                return {
+                    message: "Informação não encontrada!"
+                }
+            }
+            catch (erro) {
+                return erro;
+            }
+        }
+
 
     }
 
