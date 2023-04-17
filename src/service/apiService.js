@@ -1037,6 +1037,42 @@ class ApiService {
         }
     }
 
+    async criarDepartamento(body) {
+        const db = new Database();
+        try {
+            const {departamento} = body;
+            const insert = await Departamento.create({departamento});
+            if(insert) {
+                return {
+                message:  `Departamento ${departamento} foi incluido com sucesso`
+                }
+            }
+            return {
+                message: "Falha ao incluir funcionário"
+            };
+        }catch (erro) {
+            return erro;
+        }
+    }
+
+    async criarGerente(body) {
+        const db = new Database();
+        try {
+            const {nomeGerente} = body;
+            const insert = await Gerencia.create({nomeGerente});
+            if(insert) {
+                return {
+                message:  `Gerente ${nomeGerente} foi incluido com sucesso`
+                }
+            }
+            return {
+                message: "Falha ao incluir funcionário"
+            };
+        }catch (erro) {
+            return erro;
+        }
+    }
+
 }
 
 

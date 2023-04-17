@@ -319,4 +319,16 @@ app.post("/criar-funcionario", async function (req, res) {
     const result = await apiController.criarFuncionario(body);
     return res.json(result);
 });
+
+app.post("/criar-departamento", async function (req, res) {
+    const body = req.body;
+    const result = await apiController.criarDepartamento(body);
+    return res.json(result);
+});
+
+app.post("/criar-gerente", async function (req, res) {
+    const body = req.body;
+    const result = await apiController.criarGerente(body);
+    return res.json(result);
+});
 module.exports = app;
