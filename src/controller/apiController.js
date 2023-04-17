@@ -201,5 +201,9 @@ class ApiController {
         console.log("chegou aqui");
         return await apiService.alterarDepartamento(idDepartamento, body);
     }
+
+    async deletarFuncionario(idFuncionario) {
+        return await apiService.deletarFuncionario(idFuncionario);
+    }
 }
 module.exports = ApiController;

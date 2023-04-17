@@ -1098,7 +1098,7 @@ class ApiService {
     async alterarGerente(idGerente, body) {
         const db = new Database();
         try {
-            const { nomeGerente} = body;
+            const { nomeGerente } = body;
             const update = await Gerencia.update({ nomeGerente }, {
                 where: {
                     idGerente: idGerente
@@ -1120,7 +1120,7 @@ class ApiService {
     async alterarDepartamento(idDepartamento, body) {
         const db = new Database();
         try {
-            const {departamento} = body;
+            const { departamento } = body;
             const update = await Departamento.update({ departamento }, {
                 where: {
                     idDepartamento: idDepartamento
@@ -1133,6 +1133,28 @@ class ApiService {
             }
             return {
                 message: "Falha ao alterar Departamento"
+            };
+        } catch (erro) {
+            return erro;
+        }
+    }
+
+    async deletarFuncionario(idFuncionario) {
+        const db = new Database();
+        try {
+            console.log(idFuncionario);
+            const dell = await Funcionario.destroy({
+                where: {
+                    idFuncionario: idFuncionario
+                }
+            });
+            if (dell) {
+                return {
+                    message: `Dados do Funcionario foi deletado com sucesso`
+                }
+            }
+            return {
+                message: "Falha ao deletar Funcionario"
             };
         } catch (erro) {
             return erro;
