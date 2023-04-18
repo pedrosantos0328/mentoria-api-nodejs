@@ -1023,6 +1023,16 @@ class ApiService {
         const db = new Database();
         try {
             const { nome, cpf, cargo, endereco, dataNascimento, idDepartamento, idGerente, idEstadoCivil } = body;
+            const verificaFuncionario = await Funcionario.findOne({
+                where: {
+                    cpf: cpf
+                }
+            });
+            if(verificaFuncionario) {
+                return {
+                    message: `Funcionario ${nome} já existe`
+                }
+            }
             const insert = await Funcionario.create({ nome, cpf, cargo, endereco, dataNascimento, idDepartamento, idGerente, idEstadoCivil });
             if (insert) {
                 return {

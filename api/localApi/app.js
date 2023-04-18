@@ -371,4 +371,10 @@ app.delete("/deletar-departamento/:idDepartamento", async function (req, res) {
     const result = await apiController.deletarDepartamento(idDepartamento);
     return res.json(result);
 });
+
+app.put("/verificarFuncionario", async function (req, res) {
+    const body = req.body;
+    const result = await apiController.verificarFuncionario(body);
+    return res.json(result);
+});
 module.exports = app;

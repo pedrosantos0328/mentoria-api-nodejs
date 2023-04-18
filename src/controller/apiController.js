@@ -213,5 +213,9 @@ class ApiController {
     async deletarDepartamento(idDepartamento) {
         return await apiService.deletarDepartamento(idDepartamento);
     }
+
+    async verificarFuncionario(body) {
+        return await apiService.verificarFuncionario(body);
+    }
 }
 module.exports = ApiController;
